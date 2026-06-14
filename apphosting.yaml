@@ -4,4 +4,10 @@
 runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
-  maxInstances: 1
+  maxInstances: 5
+  memory: 1024Mi
+  cpu: 1
+
+env:
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://zintl.online
