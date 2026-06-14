@@ -1,3 +1,6 @@
+/**
+ * @fileOverview Contact page for EasyFiles.
+ */
 
 "use client";
 
@@ -5,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
-import { Mail, MessageCircle, Globe } from 'lucide-react';
+import { Mail, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -24,7 +27,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="font-bold">Email Us</h4>
-                <p className="text-muted-foreground">support@zintl.ai</p>
+                <p className="text-muted-foreground">support@easyfiles.online</p>
               </div>
             </div>
             <div className="flex gap-4">

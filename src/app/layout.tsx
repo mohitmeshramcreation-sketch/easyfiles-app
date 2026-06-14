@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 /**
- * @fileOverview The root layout component of the DocuMind application.
+ * @fileOverview The root layout component of the EasyFiles application.
  *
  * - RootLayout - The main layout wrapper providing global fonts, styles, and navigation.
  */
@@ -15,28 +15,28 @@ const ogImage = PlaceHolderImages.find(img => img.id === 'og-image')?.imageUrl;
 const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.imageUrl;
 
 export const metadata: Metadata = {
-  title: 'DocuMind - Smart AI Document Tools',
+  title: 'EasyFiles - Smart AI Document Tools',
   description: 'Your Files. Smarter. Faster. Better. AI-powered PDF and image tools for the modern era.',
-  keywords: ['PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 'private file processing', 'online document suite'],
-  metadataBase: new URL('https://documind.online'),
+  keywords: ['PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 'private file processing', 'online document suite', 'EasyFiles'],
+  metadataBase: new URL('https://easyfiles.online'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://documind.online',
-    siteName: 'DocuMind',
+    url: 'https://easyfiles.online',
+    siteName: 'EasyFiles',
     images: [
       {
         url: ogImage || '',
         width: 1200,
         height: 630,
-        alt: 'DocuMind AI Document Tools',
+        alt: 'EasyFiles AI Document Tools',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DocuMind - Smart AI Document Tools',
-    description: 'Convert, compress, and enhance documents with DocuMind AI.',
+    title: 'EasyFiles - Smart AI Document Tools',
+    description: 'Convert, compress, and enhance documents with EasyFiles AI.',
     images: [twitterImage || ''],
   },
 };

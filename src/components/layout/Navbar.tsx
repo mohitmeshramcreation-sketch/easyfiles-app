@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * @fileOverview Navigation component for DocuMind.
+ * @fileOverview Navigation component for EasyFiles.
  */
 
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export function Navbar() {
           <div className="bg-primary p-1.5 rounded-lg group-hover:rotate-12 transition-transform shadow-sm">
             <Zap className="h-5 w-5 text-background fill-current" />
           </div>
-          <span className="font-headline font-bold text-xl tracking-tight">DocuMind</span>
+          <span className="font-headline font-bold text-xl tracking-tight">EasyFiles</span>
         </Link>
 
         {/* Desktop Links */}

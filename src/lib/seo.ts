@@ -12,7 +12,7 @@ export function constructMetadata({
   noIndex?: boolean;
 }): Metadata {
   return {
-    title: `${title} - Zintl AI`,
+    title: `${title} - EasyFiles`,
     description,
     openGraph: {
       title,
@@ -28,7 +28,7 @@ export function constructMetadata({
       title,
       description,
       images: [image || '/og-image.png'],
-      creator: '@zintlai',
+      creator: '@easyfiles',
     },
     icons: {
       icon: '/favicon.ico',

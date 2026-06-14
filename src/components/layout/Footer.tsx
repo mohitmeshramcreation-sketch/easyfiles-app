@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Zap, Github, Twitter, Instagram } from 'lucide-react';
 
 /**
- * @fileOverview Global footer for DocuMind.
+ * @fileOverview Global footer for EasyFiles.
  */
 
 export function Footer() {
@@ -51,10 +51,10 @@ export function Footer() {
             <div className="bg-primary p-1.5 rounded-lg">
               <Zap className="h-5 w-5 text-background fill-current" />
             </div>
-            <span className="font-headline font-bold text-2xl tracking-tight">DocuMind</span>
+            <span className="font-headline font-bold text-2xl tracking-tight">EasyFiles</span>
           </Link>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
-            Revolutionizing document productivity for the modern era. Fast, secure, and AI-powered.
+            Revolutionizing document productivity for the modern era. Simple, fast, secure, and AI-powered.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="p-2 glass rounded-full hover:text-primary transition-colors">
@@ -88,7 +88,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-        <p>&copy; {currentYear} DocuMind AI. All rights reserved.</p>
+        <p>&copy; {currentYear} EasyFiles AI. All rights reserved.</p>
         <div className="flex gap-8">
           <span>Secure Document Processing</span>
           <span>Status: Active</span>

@@ -2,14 +2,14 @@
   "placeholderImages": [
     {
       "id": "og-image",
-      "description": "Zintl AI Document Tools Open Graph Image",
-      "imageUrl": "https://picsum.photos/seed/zintl-og/1200/630",
+      "description": "EasyFiles AI Document Tools Open Graph Image",
+      "imageUrl": "https://picsum.photos/seed/easyfiles-og/1200/630",
       "imageHint": "modern document technology"
     },
     {
       "id": "twitter-image",
-      "description": "Zintl AI Document Tools Twitter Card Image",
-      "imageUrl": "https://picsum.photos/seed/zintl-twitter/1200/630",
+      "description": "EasyFiles AI Document Tools Twitter Card Image",
+      "imageUrl": "https://picsum.photos/seed/easyfiles-twitter/1200/630",
       "imageHint": "AI workspace"
     }
   ]
