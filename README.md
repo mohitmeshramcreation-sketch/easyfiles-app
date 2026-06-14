@@ -2,25 +2,38 @@
 
 EasyFiles is a high-performance, private, and AI-powered document utility suite.
 
-## Deployment & Pricing
+## How to Host on Firebase (Recommended)
 
-### 1. Firebase App Hosting (Recommended)
-This is the modern way to host Next.js apps globally. 
-- **Platform**: Uses Google Cloud's global infrastructure.
-- **Pricing**: Requires the **Firebase Blaze Plan** (Pay-as-you-go). For an MVP with moderate traffic, usage usually falls within the **free tier limits** of the underlying Google Cloud services (Cloud Run, Cloud Build).
-- **Custom Domains**: Fully supported. You can connect your `.online` domain in the Firebase Console under **App Hosting > Settings > Custom Domains**.
+To deploy your app globally and connect your `.online` domain, follow these steps:
 
-### 2. Deployment Steps
-1. Push your code to a GitHub repository.
-2. Go to the [Firebase Console](https://console.firebase.google.com/).
-3. Select **App Hosting** and connect your repository.
-4. Firebase will automatically build your Next.js app and deploy it to a global CDN.
+### 1. Prepare your Repository
+- Ensure your code is pushed to a **GitHub** repository.
+
+### 2. Set up Firebase
+- Go to the [Firebase Console](https://console.firebase.google.com/).
+- Click **Add Project** and create a new project named "EasyFiles".
+- Upgrade to the **Blaze Plan** (Pay-as-you-go). Note: There is a generous free tier, so small/medium usage often costs $0.
+
+### 3. Enable App Hosting
+- In the left sidebar, go to **Build > App Hosting**.
+- Click **Get Started**.
+- Connect your GitHub account and select your repository.
+- Follow the wizard:
+  - **Region**: Select the one closest to your target users (e.g., `us-central1`).
+  - **Environment Variables**: You don't need to add any yet (Genkit handles its own).
+- Click **Finish and Deploy**.
+
+### 4. Connect your Custom Domain (.online)
+- Once the deployment is finished, go to the **App Hosting** dashboard.
+- Select your backend and click **Settings**.
+- Find the **Custom Domains** section.
+- Add your `.online` domain and follow the instructions to update your DNS records (A and CNAME).
 
 ## Core Features
-- **Images to PDF**: Advanced reordering, layout control, and browser-side processing.
-- **AI Scanner**: Intelligent OCR and document enhancement via EasyFiles AI.
+- **Images to PDF**: Advanced reordering, orientation control, and scaling.
+- **AI Scanner**: OCR and document enhancement via Gemini AI.
 - **PDF Suite**: Merge, Split, and Compress tools running 100% in-browser for privacy.
-- **AI PDF Summary**: Instant insights using Gemini AI.
+- **AI PDF Summary**: Instant insights from long documents.
 
-## Privacy & Security
-EasyFiles is "Privacy by Design." Most tools process files locally in the user's browser, meaning data never touches a server unless an AI feature (Summary/Chat/Scanner) is explicitly invoked.
+## Privacy
+Most tools process files locally in the user's browser, meaning data never touches a server unless an AI feature is explicitly invoked.

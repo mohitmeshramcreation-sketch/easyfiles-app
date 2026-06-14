@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 
 /**
- * @fileOverview Generates a sitemap for DocuMind.
+ * @fileOverview Generates a sitemap for EasyFiles.
  */
 
 export async function GET() {
-  const baseUrl = 'https://documind.online';
+  const baseUrl = 'https://easyfiles.online';
   const tools = [
     'images-to-pdf',
     'compress-pdf',
