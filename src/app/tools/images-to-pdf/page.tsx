@@ -1,5 +1,10 @@
-
 "use client";
+
+/**
+ * @fileOverview The primary tool for converting multiple images into a high-quality PDF.
+ *
+ * - ImagesToPDFPage - A functional client component that manages image uploads, reordering, and PDF generation.
+ */
 
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';

@@ -3,19 +3,30 @@ import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+
+/**
+ * @fileOverview The root layout component of the Zintl application.
+ *
+ * - RootLayout - The main layout wrapper providing global fonts, styles, and navigation.
+ */
+
+const ogImage = PlaceHolderImages.find(img => img.id === 'og-image')?.imageUrl;
+const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.imageUrl;
 
 export const metadata: Metadata = {
   title: 'Zintl - Next-Gen AI Document Tools',
   description: 'Your Files. Smarter. Faster. Better. AI-powered PDF and image tools for the modern era.',
-  metadataBase: new URL('https://zintl.ai'),
+  keywords: ['PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 'private file processing', 'online document suite'],
+  metadataBase: new URL('https://zintl.online'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://zintl.ai',
+    url: 'https://zintl.online',
     siteName: 'Zintl',
     images: [
       {
-        url: 'https://picsum.photos/seed/zintl-og/1200/630',
+        url: ogImage || '',
         width: 1200,
         height: 630,
         alt: 'Zintl AI Document Tools',
@@ -26,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Zintl - Next-Gen AI Document Tools',
     description: 'Convert, compress, and enhance documents with Zintl AI.',
-    images: ['https://picsum.photos/seed/zintl-twitter/1200/630'],
+    images: [twitterImage || ''],
   },
 };
 

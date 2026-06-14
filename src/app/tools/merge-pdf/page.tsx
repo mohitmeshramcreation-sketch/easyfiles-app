@@ -1,5 +1,10 @@
-
 "use client";
+
+/**
+ * @fileOverview A utility tool for merging multiple PDF documents into a single file.
+ *
+ * - MergePDFPage - Handles PDF uploads, reordering, and browser-side merging using pdf-lib.
+ */
 
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';

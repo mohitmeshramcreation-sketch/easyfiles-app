@@ -1,3 +1,8 @@
+/**
+ * @fileOverview The main landing page for Zintl.
+ *
+ * - Home - Displays the hero section, main tool focus, and the complete document tool suite.
+ */
 
 import { Zap, FileText, ImageIcon, Sparkles, Shield, Cpu, Clock, Trash2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
