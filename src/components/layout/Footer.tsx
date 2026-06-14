@@ -8,10 +8,10 @@ export function Footer() {
     {
       title: 'Tools',
       links: [
+        { name: 'Images to PDF', href: '/tools/images-to-pdf' },
         { name: 'Compress PDF', href: '/tools/compress-pdf' },
         { name: 'Merge PDF', href: '/tools/merge-pdf' },
         { name: 'Split PDF', href: '/tools/split-pdf' },
-        { name: 'JPG to PDF', href: '/tools/jpg-to-pdf' },
       ],
     },
     {
@@ -26,7 +26,6 @@ export function Footer() {
       title: 'Company',
       links: [
         { name: 'About', href: '/about' },
-        { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
         { name: 'Pricing', href: '/pricing' },
       ],
@@ -36,18 +35,12 @@ export function Footer() {
       links: [
         { name: 'Privacy', href: '/privacy' },
         { name: 'Terms', href: '/terms' },
-        { name: 'Disclaimer', href: '/disclaimer' },
       ],
     },
   ];
 
   return (
     <footer className="w-full bg-background border-t mt-20 pt-16 pb-8 px-4 md:px-8">
-      {/* Google AdSense placement area - Footer Banner */}
-      <div className="max-w-7xl mx-auto mb-16 h-24 bg-muted/20 border border-dashed border-muted-foreground/20 rounded-xl flex items-center justify-center text-muted-foreground/40 text-xs uppercase tracking-widest">
-        Advertisement
-      </div>
-
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-12">
         <div className="col-span-2 space-y-6">
           <Link href="/" className="flex items-center gap-2">
@@ -57,7 +50,7 @@ export function Footer() {
             <span className="font-headline font-bold text-2xl tracking-tight">Zintl</span>
           </Link>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
-            Revolutionizing document productivity for Gen Z. Experience the power of AI-driven file management. Fast, secure, and smart.
+            Revolutionizing document productivity for the modern era. Fast, secure, and AI-powered.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="p-2 glass rounded-full hover:text-primary transition-colors">
@@ -93,8 +86,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
         <p>&copy; {currentYear} Zintl AI. All rights reserved.</p>
         <div className="flex gap-8">
-          <span>Made with ❤️ for Creators</span>
-          <span>Status: All systems operational</span>
+          <span>Secure Document Processing</span>
+          <span>Status: Active</span>
         </div>
       </div>
     </footer>

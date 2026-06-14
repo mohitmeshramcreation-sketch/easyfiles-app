@@ -1,15 +1,15 @@
-
-import { FileText, Clock, Shield, Sparkles, MessageSquare, ArrowRight } from 'lucide-react';
+import { FileText, Clock, Shield, Sparkles, MessageSquare, ArrowRight, ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 export default function PDFToolsPage() {
   const tools = [
+    { title: 'Images to PDF', desc: 'Convert multiple photos into one PDF.', icon: ImageIcon, href: '/tools/images-to-pdf' },
     { title: 'Compress PDF', desc: 'Reduce file size while keeping quality.', icon: Clock, href: '/tools/compress-pdf' },
-    { title: 'Merge PDF', desc: 'Combine multiple PDFs into one.', icon: FileText, href: '/tools/merge-pdf' },
-    { title: 'Split PDF', desc: 'Extract pages or split a PDF.', icon: Shield, href: '/tools/split-pdf' },
-    { title: 'AI PDF Summary', desc: 'Get key insights instantly.', icon: Sparkles, href: '/tools/ai-pdf-summary' },
+    { title: 'Merge PDF', desc: 'Combine multiple PDFs into one document.', icon: FileText, href: '/tools/merge-pdf' },
+    { title: 'Split PDF', desc: 'Extract specific pages or ranges.', icon: Shield, href: '/tools/split-pdf' },
+    { title: 'AI PDF Summary', desc: 'Get key insights instantly with AI.', icon: Sparkles, href: '/tools/ai-pdf-summary' },
     { title: 'PDF Chat', desc: 'Ask questions to your documents.', icon: MessageSquare, href: '/tools/pdf-chat' },
   ];
 
@@ -18,7 +18,7 @@ export default function PDFToolsPage() {
       <div className="mb-16">
         <h1 className="font-headline text-5xl font-bold mb-4">PDF Tools</h1>
         <p className="text-muted-foreground text-xl max-w-2xl">
-          Everything you need to manage, convert, and understand your PDF documents.
+          Everything you need to manage, convert, and understand your documents.
         </p>
       </div>
 

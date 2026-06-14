@@ -1,12 +1,11 @@
-
 import { ImageIcon, Camera, Cpu, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 
 export default function ImageToolsPage() {
   const tools = [
-    { title: 'JPG to PDF', desc: 'Convert images into high-quality PDFs.', icon: ImageIcon, href: '/tools/jpg-to-pdf' },
-    { title: 'AI Scanner', desc: 'Scan, enhance and OCR your photos.', icon: Cpu, href: '/tools/ai-scanner' },
+    { title: 'Images to PDF', desc: 'Convert multiple photos into a high-quality PDF document.', icon: ImageIcon, href: '/tools/images-to-pdf' },
+    { title: 'AI Scanner', desc: 'Scan, enhance and OCR your document photos with Gemini AI.', icon: Cpu, href: '/tools/ai-scanner' },
   ];
 
   return (

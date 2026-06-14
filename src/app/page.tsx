@@ -6,10 +6,10 @@ import { Badge } from '@/components/ui/badge';
 
 export default function Home() {
   const tools = [
+    { title: 'Images to PDF', desc: 'Convert photos to professional PDF documents with reordering.', icon: ImageIcon, href: '/tools/images-to-pdf', category: 'Most Popular' },
+    { title: 'AI PDF Summary', desc: 'Get instant insights from any document with Gemini.', icon: Sparkles, href: '/tools/ai-pdf-summary', category: 'AI' },
     { title: 'Compress PDF', desc: 'Reduce file size without losing quality.', icon: Clock, href: '/tools/compress-pdf', category: 'PDF' },
-    { title: 'AI PDF Summary', desc: 'Get instant insights from any document.', icon: Sparkles, href: '/tools/ai-pdf-summary', category: 'AI' },
     { title: 'Merge PDF', desc: 'Combine multiple files into one.', icon: FileText, href: '/tools/merge-pdf', category: 'PDF' },
-    { title: 'Image to PDF', desc: 'Convert photos to clean PDF documents.', icon: ImageIcon, href: '/tools/jpg-to-pdf', category: 'Image' },
     { title: 'AI Scanner', desc: 'OCR and enhance your document photos.', icon: Cpu, href: '/tools/ai-scanner', category: 'AI' },
     { title: 'Secure Split', desc: 'Extract specific pages safely.', icon: Shield, href: '/tools/split-pdf', category: 'PDF' },
   ];
@@ -30,7 +30,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-4 md:px-8 max-w-7xl mx-auto text-center">
         <Badge variant="secondary" className="mb-6 rounded-full px-4 py-1.5 animate-bounce">
-          New: AI-Powered Resume Analyzer ✨
+          New: Advanced Images to PDF Tool ✨
         </Badge>
         <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[1.1]">
           Your Files. <span className="text-gradient">Smarter.</span> Faster. Better.
@@ -39,15 +39,15 @@ export default function Home() {
           Convert, compress, enhance, and manage your documents instantly with our next-gen AI-powered workflow.
         </p>
 
-        {/* Drag & Drop Hero Placeholder */}
+        {/* Primary Action */}
         <div className="max-w-3xl mx-auto mb-20">
-          <Link href="/pdf-tools">
+          <Link href="/tools/images-to-pdf">
             <div className="glass border-2 border-dashed border-primary/30 rounded-[2.5rem] p-12 group hover:border-primary transition-all cursor-pointer">
               <div className="bg-primary/10 p-4 rounded-2xl w-fit mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Zap className="h-10 w-10 text-primary" />
+                <ImageIcon className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-2xl font-headline font-bold mb-2">Drop files here or click to start</h3>
-              <p className="text-muted-foreground">Supports PDF, JPG, PNG, and more. Max 50MB.</p>
+              <h3 className="text-2xl font-headline font-bold mb-2">Drop images here or click to convert</h3>
+              <p className="text-muted-foreground">Fast, high-quality Images to PDF conversion.</p>
             </div>
           </Link>
         </div>
@@ -63,13 +63,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google AdSense placement area - Homepage Banner */}
-      <div className="max-w-7xl mx-auto px-4 mb-20">
-        <div className="w-full h-32 bg-muted/10 border rounded-2xl flex items-center justify-center text-muted-foreground/30 text-[10px] tracking-widest uppercase">
-          Advertisement
-        </div>
-      </div>
-
       {/* Tools Grid */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-32">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
@@ -77,9 +70,11 @@ export default function Home() {
             <h2 className="font-headline text-4xl font-bold mb-4">Powerful Tools for You</h2>
             <p className="text-muted-foreground">The only toolkit you'll ever need for your files.</p>
           </div>
-          <Button variant="outline" className="rounded-full group">
-            View All Tools <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <Link href="/pdf-tools">
+            <Button variant="outline" className="rounded-full group">
+              View All Tools <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -90,7 +85,7 @@ export default function Home() {
                   <tool.icon className="h-6 w-6 text-secondary" />
                 </div>
                 <Badge variant="outline" className="w-fit mb-4 text-[10px] uppercase tracking-tighter">
-                  {tool.category} Tool
+                  {tool.category}
                 </Badge>
                 <h3 className="text-xl font-headline font-bold mb-2 group-hover:text-primary transition-colors">
                   {tool.title}
@@ -104,19 +99,6 @@ export default function Home() {
               </Card>
             </Link>
           ))}
-        </div>
-      </section>
-
-      {/* Quick CTA */}
-      <section className="px-4 md:px-8 max-w-7xl mx-auto mb-32">
-        <div className="bg-gradient-to-br from-[#818CF8] to-[#2DD4BF] rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden group">
-          <div className="absolute top-0 left-0 w-full h-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <h2 className="font-headline text-4xl md:text-6xl font-bold text-background mb-8 leading-tight">
-            Stop wasting time with old <br className="hidden md:block" /> document tools.
-          </h2>
-          <Button size="lg" className="bg-background text-foreground hover:bg-background/90 rounded-full px-12 py-8 text-xl font-bold">
-            Start Processing Free
-          </Button>
         </div>
       </section>
     </div>
