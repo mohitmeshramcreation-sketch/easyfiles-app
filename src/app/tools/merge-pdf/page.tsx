@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Download, FileStack, Plus, Trash2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { PDFDocument } from 'pdf-lib';
 
 export default function MergePDFPage() {
