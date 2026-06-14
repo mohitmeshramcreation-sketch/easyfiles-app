@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const baseUrl = 'https://zintl.ai';
+  const baseUrl = 'https://zintl.online';
   const tools = [
+    'images-to-pdf',
     'compress-pdf',
     'merge-pdf',
     'split-pdf',
     'jpg-to-pdf',
     'pdf-to-word',
     'ai-pdf-summary',
+    'pdf-chat',
     'ai-scanner',
   ];
 
@@ -26,6 +28,18 @@ export async function GET() {
           <priority>0.8</priority>
         </url>
       `).join('')}
+      <url>
+        <loc>${baseUrl}/about</loc>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>${baseUrl}/pricing</loc>
+        <priority>0.5</priority>
+      </url>
+      <url>
+        <loc>${baseUrl}/contact</loc>
+        <priority>0.5</priority>
+      </url>
     </urlset>`;
 
   return new NextResponse(xml, {
