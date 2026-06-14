@@ -17,7 +17,16 @@ export default function MergePDFPage() {
   const { toast } = useToast();
 
   const handleFilesAdded = (newFiles: File[]) => {
-    setFiles(prev => [...prev, ...newFiles]);
+    // Filter to ensure only PDFs are added
+    const pdfs = newFiles.filter(f => f.type === 'application/pdf');
+    if (pdfs.length < newFiles.length) {
+      toast({
+        title: "Invalid file type",
+        description: "Only PDF files can be merged.",
+        variant: "destructive"
+      });
+    }
+    setFiles(prev => [...prev, ...pdfs]);
     setMergedPdfUrl(null);
   };
 
@@ -35,18 +44,37 @@ export default function MergePDFPage() {
     setIsLoading(true);
     try {
       const mergedPdf = await PDFDocument.create();
+      
       for (const file of files) {
-        const fileArrayBuffer = await file.arrayBuffer();
-        const pdf = await PDFDocument.load(fileArrayBuffer);
-        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-        copiedPages.forEach((page) => mergedPdf.addPage(page));
+        try {
+          const fileArrayBuffer = await file.arrayBuffer();
+          const pdf = await PDFDocument.load(fileArrayBuffer);
+          const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+          copiedPages.forEach((page) => mergedPdf.addPage(page));
+        } catch (fileError) {
+          console.error(`Error processing file ${file.name}:`, fileError);
+          throw new Error(`Could not process "${file.name}". It might be encrypted or corrupted.`);
+        }
       }
+      
       const pdfBytes = await mergedPdf.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      setMergedPdfUrl(URL.createObjectURL(blob));
+      
+      if (mergedPdfUrl) {
+        URL.revokeObjectURL(mergedPdfUrl);
+      }
+      
+      const url = URL.createObjectURL(blob);
+      setMergedPdfUrl(url);
+      
       toast({ title: "Success!", description: "Documents merged successfully." });
-    } catch (error) {
-      toast({ variant: "destructive", title: "Merge failed", description: "Could not merge some files. Ensure they are not password protected." });
+    } catch (error: any) {
+      console.error("Merge error:", error);
+      toast({ 
+        variant: "destructive", 
+        title: "Merge failed", 
+        description: error.message || "Could not merge some files. Ensure they are not password protected." 
+      });
     } finally {
       setIsLoading(false);
     }
