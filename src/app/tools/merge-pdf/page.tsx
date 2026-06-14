@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';
 import { Button } from '@/components/ui/button';
-import { Download, FileStack, Plus, Trash2, ArrowUp, ArrowDown } from 'lucide-react';
+import { Download, FileStack, Plus, Trash2, ArrowUp, ArrowDown, FileCheck } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -90,7 +91,7 @@ export default function MergePDFPage() {
     <div className="max-w-4xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h1 className="font-headline text-5xl font-bold mb-4">Merge PDF</h1>
-        <p className="text-muted-foreground text-lg">Combine multiple PDF files into one single document in your preferred order.</p>
+        <p className="text-muted-foreground text-lg">Combine multiple PDF documents into one single file. Fast, secure, and accurate.</p>
       </div>
 
       <div className="space-y-8">
@@ -103,51 +104,61 @@ export default function MergePDFPage() {
             />
             
             {files.length > 0 && (
-              <Card className="glass p-6 border-none space-y-6">
-                <div className="flex justify-between items-center px-2">
-                  <h3 className="font-headline font-bold text-xl">Order of Merge</h3>
-                  <Badge variant="outline">{files.length} Files Selected</Badge>
+              <Card className="glass p-8 border-none space-y-6 shadow-2xl shadow-primary/5 animate-in slide-in-from-bottom-4">
+                <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                  <h3 className="font-headline font-bold text-xl">Files to Merge</h3>
+                  <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                    {files.length} Files Selected
+                  </Badge>
                 </div>
                 <div className="space-y-2">
                   {files.map((file, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10 group animate-in slide-in-from-left-2 duration-300">
-                      <div className="flex items-center gap-3">
-                        <Badge className="w-6 h-6 p-0 flex items-center justify-center rounded-full bg-primary/20 text-primary">{i+1}</Badge>
-                        <FileStack className="h-4 w-4 text-primary shrink-0" />
-                        <span className="text-sm truncate max-w-[150px] md:max-w-md">{file.name}</span>
+                    <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10 group hover:border-primary/20 transition-all">
+                      <div className="flex items-center gap-3 truncate">
+                        <span className="text-xs font-bold text-muted-foreground w-6 h-6 flex items-center justify-center bg-white/10 rounded-full">{i + 1}</span>
+                        <FileStack className="h-5 w-5 text-primary shrink-0" />
+                        <span className="text-sm font-medium truncate max-w-[200px] md:max-w-md">{file.name}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Button variant="ghost" size="icon" onClick={() => moveFile(i, 'up')} disabled={i === 0}>
+                      <div className="flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => moveFile(i, 'up')} disabled={i === 0}>
                           <ArrowUp className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => moveFile(i, 'down')} disabled={i === files.length - 1}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => moveFile(i, 'down')} disabled={i === files.length - 1}>
                           <ArrowDown className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => removeFile(i)} className="text-muted-foreground hover:text-destructive">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-destructive" onClick={() => removeFile(i)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </div>
                   ))}
                 </div>
-                <Button className="w-full rounded-full h-14 text-lg font-bold shadow-lg shadow-primary/10" onClick={mergeFiles} disabled={isLoading || files.length < 2}>
-                  {isLoading ? "Processing documents..." : `Merge ${files.length} PDF Files`}
+                <Button 
+                  className="w-full rounded-full h-14 text-lg font-bold shadow-xl shadow-primary/20 bg-primary hover:bg-primary/90 transition-all" 
+                  onClick={mergeFiles} 
+                  disabled={isLoading || files.length < 2}
+                >
+                  {isLoading ? "Merging Documents..." : `Merge ${files.length} PDF Files`}
                 </Button>
               </Card>
             )}
           </>
         ) : (
-          <Card className="glass p-12 border-none text-center animate-in zoom-in duration-300">
-            <div className="bg-green-500/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8">
-              <Download className="h-10 w-10 text-green-500" />
+          <Card className="glass p-16 border-none text-center animate-in zoom-in duration-500 shadow-2xl shadow-primary/10">
+            <div className="bg-primary/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+              <FileCheck className="h-12 w-12 text-primary" />
             </div>
             <h2 className="text-4xl font-headline font-bold mb-4">Merge Successful!</h2>
-            <p className="text-muted-foreground mb-8">Your combined PDF is ready. We've optimized the file size while keeping visual fidelity.</p>
+            <p className="text-muted-foreground text-lg mb-10">Your combined PDF is ready. We've optimized the file structure while keeping visual fidelity.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href={mergedPdfUrl} download="zintl-merged.pdf" className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all">
-                Download Merged PDF
+              <a 
+                href={mergedPdfUrl} 
+                download="zintl-merged-document.pdf" 
+                className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20"
+              >
+                <Download className="mr-2 h-5 w-5" /> Download Merged PDF
               </a>
-              <Button variant="outline" className="rounded-full px-12 h-14 text-lg" onClick={() => { setFiles([]); setMergedPdfUrl(null); }}>
+              <Button variant="outline" className="rounded-full px-12 h-14 text-lg hover:bg-white/5" onClick={() => { setFiles([]); setMergedPdfUrl(null); }}>
                 Start Over
               </Button>
             </div>

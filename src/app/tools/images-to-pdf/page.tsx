@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';
 import { Button } from '@/components/ui/button';
-import { Download, ImageIcon, FileCheck, ArrowUp, ArrowDown, Trash2, Layout, Sparkles } from 'lucide-react';
+import { Download, ImageIcon, FileCheck, ArrowUp, ArrowDown, Trash2, Layout, Sparkles, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -19,7 +20,15 @@ export default function ImagesToPDFPage() {
   const { toast } = useToast();
 
   const handleFilesAdded = (files: File[]) => {
-    setImageFiles(prev => [...prev, ...files]);
+    const validFiles = files.filter(f => f.type.startsWith('image/'));
+    if (validFiles.length < files.length) {
+      toast({
+        title: "Invalid files detected",
+        description: "Only image files (JPG, PNG, etc.) are supported.",
+        variant: "destructive"
+      });
+    }
+    setImageFiles(prev => [...prev, ...validFiles]);
     setPdfUrl(null);
   };
 
@@ -44,11 +53,17 @@ export default function ImagesToPDFPage() {
       for (const file of imageFiles) {
         const imageBytes = await file.arrayBuffer();
         let image;
-        if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
-          image = await pdfDoc.embedJpg(imageBytes);
-        } else if (file.type === 'image/png') {
-          image = await pdfDoc.embedPng(imageBytes);
-        } else {
+        try {
+          if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+            image = await pdfDoc.embedJpg(imageBytes);
+          } else if (file.type === 'image/png') {
+            image = await pdfDoc.embedPng(imageBytes);
+          } else {
+            console.warn(`Skipping unsupported format: ${file.type}`);
+            continue;
+          }
+        } catch (e) {
+          console.error(`Error embedding ${file.name}:`, e);
           continue;
         }
 
@@ -78,31 +93,32 @@ export default function ImagesToPDFPage() {
 
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      setPdfUrl(URL.createObjectURL(blob));
-      toast({ title: "Conversion Complete", description: `Converted ${imageFiles.length} images to PDF.` });
+      const url = URL.createObjectURL(blob);
+      setPdfUrl(url);
+      toast({ title: "Conversion Complete", description: `Successfully converted ${imageFiles.length} images.` });
     } catch (error) {
-      toast({ variant: "destructive", title: "Error", description: "Could not convert images." });
+      toast({ variant: "destructive", title: "Conversion Error", description: "An unexpected error occurred during PDF generation." });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-16">
+    <div className="max-w-6xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-primary font-bold text-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-primary font-bold text-sm border-primary/20">
           <Sparkles className="h-4 w-4" />
-          Our Most Popular Tool
+          Advanced Image to PDF Workflow
         </div>
-        <h1 className="font-headline text-5xl font-bold mb-4">Advanced Images to PDF</h1>
+        <h1 className="font-headline text-5xl font-bold mb-4">Images to PDF</h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Upload dozens of photos, reorder them instantly, and export as a professional PDF with custom layout settings.
+          The most powerful tool for combining your photos into a single, high-quality document. Reorder, rotate, and scale with ease.
         </p>
       </div>
 
       {!pdfUrl ? (
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="grid lg:grid-cols-4 gap-8 items-start">
+          <div className="lg:col-span-3 space-y-8">
             <FileDropzone 
               accept="image/*"
               multiple
@@ -110,22 +126,27 @@ export default function ImagesToPDFPage() {
             />
             
             {imageFiles.length > 0 && (
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="font-bold text-xl">Selected Images</h3>
-                  <Badge variant="secondary" className="px-4 py-1 rounded-full">{imageFiles.length} Files</Badge>
+              <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
+                <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-headline font-bold text-xl">Order Images</h3>
+                    <Badge variant="secondary" className="bg-primary/20 text-primary border-none">{imageFiles.length} Files</Badge>
+                  </div>
+                  <Button variant="ghost" size="sm" onClick={() => setImageFiles([])} className="text-muted-foreground hover:text-destructive">
+                    Clear All
+                  </Button>
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   {imageFiles.map((file, i) => (
-                    <div key={i} className="glass p-3 rounded-2xl flex items-center justify-between group border-white/5 hover:border-primary/20 transition-all">
+                    <div key={i} className="glass p-3 rounded-2xl flex items-center justify-between group border-white/5 hover:border-primary/20 transition-all hover:bg-white/5">
                       <div className="flex items-center gap-4 truncate">
-                        <span className="text-xs font-bold text-muted-foreground w-4">{i + 1}.</span>
-                        <div className="bg-white/5 p-2 rounded-lg">
+                        <span className="text-xs font-bold text-muted-foreground w-6 h-6 rounded-full bg-white/5 flex items-center justify-center">{i + 1}</span>
+                        <div className="bg-primary/10 p-2 rounded-lg">
                           <ImageIcon className="h-5 w-5 text-primary" />
                         </div>
                         <span className="text-sm font-medium truncate">{file.name}</span>
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
                         <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => moveItem(i, 'up')} disabled={i === 0}>
                           <ArrowUp className="h-4 w-4" />
                         </Button>
@@ -143,68 +164,75 @@ export default function ImagesToPDFPage() {
             )}
           </div>
 
-          <aside className="space-y-6">
-            <Card className="glass p-6 border-none sticky top-24">
+          <aside className="space-y-6 lg:sticky lg:top-24">
+            <Card className="glass p-6 border-none shadow-2xl shadow-primary/5">
               <h3 className="font-headline font-bold text-xl mb-6 flex items-center gap-2">
                 <Layout className="h-5 w-5 text-primary" />
-                PDF Settings
+                Layout Settings
               </h3>
               
               <div className="space-y-6">
                 <div className="space-y-3">
-                  <label className="text-sm font-medium text-muted-foreground">Orientation</label>
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Page Orientation</label>
                   <Select value={orientation} onValueChange={(v: any) => setOrientation(v)}>
-                    <SelectTrigger className="rounded-xl h-12">
+                    <SelectTrigger className="rounded-xl h-12 bg-white/5 border-white/10">
                       <SelectValue placeholder="Select orientation" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="portrait">Portrait (Vertical)</SelectItem>
-                      <SelectItem value="landscape">Landscape (Horizontal)</SelectItem>
+                    <SelectContent className="glass border-white/10">
+                      <SelectItem value="portrait">Portrait (A4)</SelectItem>
+                      <SelectItem value="landscape">Landscape (A4)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-sm font-medium text-muted-foreground">Image Fit</label>
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Image Scaling</label>
                   <Select value={scaling} onValueChange={(v: any) => setScaling(v)}>
-                    <SelectTrigger className="rounded-xl h-12">
+                    <SelectTrigger className="rounded-xl h-12 bg-white/5 border-white/10">
                       <SelectValue placeholder="Select scaling" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="fit">Fit to Page (Auto-resize)</SelectItem>
-                      <SelectItem value="original">Original Image Size</SelectItem>
+                    <SelectContent className="glass border-white/10">
+                      <SelectItem value="fit">Fit to Page (Auto)</SelectItem>
+                      <SelectItem value="original">Original Size</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <Button 
-                  className="w-full rounded-full h-14 text-lg font-bold shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90 transition-all" 
+                  className="w-full rounded-full h-14 text-lg font-bold shadow-xl shadow-primary/20 bg-primary hover:bg-primary/90 transition-all" 
                   onClick={convertToPdf} 
                   disabled={isLoading || imageFiles.length === 0}
                 >
-                  {isLoading ? "Generating..." : `Convert to PDF`}
+                  {isLoading ? "Processing..." : `Convert to PDF`}
                 </Button>
                 
-                <p className="text-[10px] text-center text-muted-foreground uppercase tracking-widest">
-                  Processing on your device
-                </p>
+                <div className="flex items-start gap-2 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <AlertCircle className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
+                  <p className="text-[10px] text-muted-foreground leading-relaxed">
+                    Processing occurs locally in your browser. No images are uploaded to our database for privacy.
+                  </p>
+                </div>
               </div>
             </Card>
           </aside>
         </div>
       ) : (
-        <Card className="glass p-12 border-none text-center max-w-2xl mx-auto">
-          <div className="bg-primary/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8">
+        <Card className="glass p-16 border-none text-center max-w-2xl mx-auto shadow-2xl shadow-primary/10 animate-in zoom-in duration-500">
+          <div className="bg-primary/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
             <FileCheck className="h-12 w-12 text-primary" />
           </div>
           <h2 className="text-4xl font-headline font-bold mb-4 tracking-tight">PDF is Ready!</h2>
-          <p className="text-muted-foreground text-lg mb-10">All images were successfully combined into a high-quality document.</p>
+          <p className="text-muted-foreground text-lg mb-10">We've compiled your images into a professional PDF document. Your privacy was maintained throughout.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href={pdfUrl} download="zintl-converted-images.pdf" className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20">
-              <Download className="mr-2 h-5 w-5" /> Download Document
+            <a 
+              href={pdfUrl} 
+              download="zintl-converted-document.pdf" 
+              className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20"
+            >
+              <Download className="mr-2 h-5 w-5" /> Download PDF
             </a>
-            <Button variant="outline" className="rounded-full px-12 h-14 text-lg" onClick={() => { setImageFiles([]); setPdfUrl(null); }}>
-              New Project
+            <Button variant="outline" className="rounded-full px-12 h-14 text-lg hover:bg-white/5" onClick={() => { setImageFiles([]); setPdfUrl(null); }}>
+              Start New Batch
             </Button>
           </div>
         </Card>

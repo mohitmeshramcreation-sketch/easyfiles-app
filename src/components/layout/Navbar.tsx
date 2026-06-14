@@ -1,7 +1,8 @@
+
 "use client";
 
 import Link from 'next/link';
-import { Zap, Menu, X } from 'lucide-react';
+import { Zap, Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -9,6 +10,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { name: 'Images to PDF', href: '/tools/images-to-pdf', featured: true },
     { name: 'PDF Tools', href: '/pdf-tools' },
     { name: 'Image Tools', href: '/image-tools' },
     { name: 'AI Features', href: '/ai-tools' },
@@ -17,7 +19,7 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 w-full px-4 py-3 md:px-8">
-      <div className="mx-auto max-w-7xl glass rounded-full px-6 py-2 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl glass rounded-full px-6 py-2 flex items-center justify-between border-white/10">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-primary p-1.5 rounded-lg group-hover:rotate-12 transition-transform">
             <Zap className="h-5 w-5 text-background fill-current" />
@@ -26,17 +28,20 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className={`text-sm font-medium transition-colors flex items-center gap-1.5 ${
+                link.featured ? 'text-primary font-bold' : 'text-muted-foreground hover:text-primary'
+              }`}
             >
+              {link.featured && <Sparkles className="h-3 w-3" />}
               {link.name}
             </Link>
           ))}
-          <Button variant="default" size="sm" className="rounded-full px-6 font-semibold">
+          <Button variant="default" size="sm" className="rounded-full px-6 font-semibold shadow-lg shadow-primary/20">
             Get Started
           </Button>
         </div>
@@ -52,12 +57,12 @@ export function Navbar() {
 
       {/* Mobile Links */}
       {isOpen && (
-        <div className="md:hidden absolute top-20 left-4 right-4 glass rounded-3xl p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="md:hidden absolute top-20 left-4 right-4 glass rounded-3xl p-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-300 z-50">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href} 
-              className="block text-lg font-medium text-foreground py-2"
+              className={`block text-lg font-medium py-2 ${link.featured ? 'text-primary' : 'text-foreground'}`}
               onClick={() => setIsOpen(false)}
             >
               {link.name}
