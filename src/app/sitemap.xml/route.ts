@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
 
+/**
+ * @fileOverview Generates a sitemap for DocuMind.
+ */
+
 export async function GET() {
-  const baseUrl = 'https://zintl.online';
+  const baseUrl = 'https://documind.online';
   const tools = [
     'images-to-pdf',
     'compress-pdf',

@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * @fileOverview Navigation component for DocuMind.
+ */
+
 import Link from 'next/link';
 import { Zap, Menu, X, Sparkles, Rocket } from 'lucide-react';
 import { useState } from 'react';
@@ -23,7 +27,7 @@ export function Navbar() {
           <div className="bg-primary p-1.5 rounded-lg group-hover:rotate-12 transition-transform shadow-sm">
             <Zap className="h-5 w-5 text-background fill-current" />
           </div>
-          <span className="font-headline font-bold text-xl tracking-tight">Zintl</span>
+          <span className="font-headline font-bold text-xl tracking-tight">DocuMind</span>
         </Link>
 
         {/* Desktop Links */}

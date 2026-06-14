@@ -1,3 +1,7 @@
+/**
+ * @fileOverview Terms of service for DocuMind.
+ */
+
 export default function TermsPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20 prose prose-invert">
@@ -6,12 +10,12 @@ export default function TermsPage() {
       
       <section className="mt-12">
         <h2 className="font-headline text-2xl font-bold text-foreground">1. Acceptance of Terms</h2>
-        <p>By accessing and using Zintl AI, you agree to be bound by these terms. If you do not agree, please do not use our services.</p>
+        <p>By accessing and using DocuMind AI, you agree to be bound by these terms. If you do not agree, please do not use our services.</p>
       </section>
 
       <section className="mt-8">
         <h2 className="font-headline text-2xl font-bold text-foreground">2. Usage License</h2>
-        <p>Zintl grants you a personal, non-exclusive license to use our document tools for personal or professional use. You are responsible for the content of the files you process.</p>
+        <p>DocuMind grants you a personal, non-exclusive license to use our document tools for personal or professional use. You are responsible for the content of the files you process.</p>
       </section>
 
       <section className="mt-8">
@@ -21,12 +25,12 @@ export default function TermsPage() {
 
       <section className="mt-8">
         <h2 className="font-headline text-2xl font-bold text-foreground">4. Limitation of Liability</h2>
-        <p>Zintl is provided "as is". We are not liable for any data loss or errors resulting from the use of our automated document tools.</p>
+        <p>DocuMind is provided "as is". We are not liable for any data loss or errors resulting from the use of our automated document tools.</p>
       </section>
 
       <section className="mt-12 p-8 glass rounded-3xl border-none">
         <h3 className="font-bold mb-4">Questions?</h3>
-        <p className="m-0 text-muted-foreground">Contact us at legal@zintl.ai for any clarification on our terms.</p>
+        <p className="m-0 text-muted-foreground">Contact us at legal@documind.ai for any clarification on our terms.</p>
       </section>
     </div>
   );

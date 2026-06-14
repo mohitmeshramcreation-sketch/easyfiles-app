@@ -1,5 +1,5 @@
 /**
- * @fileOverview The main landing page for Zintl.
+ * @fileOverview The main landing page for DocuMind.
  *
  * - Home - Displays the hero section, main tool focus, and the complete document tool suite.
  */
@@ -13,7 +13,7 @@ import { Badge } from '@/components/ui/badge';
 export default function Home() {
   const tools = [
     { title: 'Images to PDF', desc: 'Convert photos to professional PDF documents with advanced reordering and layout controls.', icon: ImageIcon, href: '/tools/images-to-pdf', category: 'Main Tool' },
-    { title: 'AI PDF Summary', desc: 'Get instant insights from any document with Gemini AI.', icon: Sparkles, href: '/tools/ai-pdf-summary', category: 'AI' },
+    { title: 'AI PDF Summary', desc: 'Get instant insights from any document with DocuMind AI.', icon: Sparkles, href: '/tools/ai-pdf-summary', category: 'AI' },
     { title: 'Compress PDF', desc: 'Reduce file size intelligently without losing visual quality.', icon: Clock, href: '/tools/compress-pdf', category: 'Optimization' },
     { title: 'Merge PDF', desc: 'Combine multiple files into one professional document.', icon: FileText, href: '/tools/merge-pdf', category: 'PDF' },
     { title: 'AI Scanner', desc: 'OCR and enhance your document photos into searchable PDFs.', icon: Cpu, href: '/tools/ai-scanner', category: 'AI' },
@@ -43,7 +43,7 @@ export default function Home() {
           Your Files. <span className="text-gradient">Smarter.</span> Faster. Better.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-          Convert, compress, and enhance documents instantly with Zintl. Professional tools, zero learning curve, 100% private.
+          Convert, compress, and enhance documents instantly with DocuMind. Professional tools, zero learning curve, 100% private.
         </p>
 
         {/* Primary Action - Main Tool Focus */}

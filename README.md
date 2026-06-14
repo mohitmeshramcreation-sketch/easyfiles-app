@@ -1,6 +1,6 @@
-# Zintl - Next-Gen AI Document Tools
+# DocuMind - Smart AI Document Tools
 
-Zintl is a high-performance, private, and AI-powered document utility suite.
+DocuMind is a high-performance, private, and AI-powered document utility suite.
 
 ## Deployment & Pricing
 
@@ -18,9 +18,9 @@ This is the modern way to host Next.js apps globally.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, layout control, and browser-side processing.
-- **AI Scanner**: Intelligent OCR and document enhancement via Gemini AI.
+- **AI Scanner**: Intelligent OCR and document enhancement via DocuMind AI.
 - **PDF Suite**: Merge, Split, and Compress tools running 100% in-browser for privacy.
-- **AI PDF Summary**: Instant insights using Gemini 1.5 Flash.
+- **AI PDF Summary**: Instant insights using Gemini AI.
 
 ## Privacy & Security
-Zintl is "Privacy by Design." Most tools process files locally in the user's browser, meaning data never touches a server unless an AI feature (Summary/Chat/Scanner) is explicitly invoked.
+DocuMind is "Privacy by Design." Most tools process files locally in the user's browser, meaning data never touches a server unless an AI feature (Summary/Chat/Scanner) is explicitly invoked.

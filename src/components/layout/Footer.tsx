@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { Zap, Github, Twitter, Instagram } from 'lucide-react';
 
+/**
+ * @fileOverview Global footer for DocuMind.
+ */
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -47,7 +51,7 @@ export function Footer() {
             <div className="bg-primary p-1.5 rounded-lg">
               <Zap className="h-5 w-5 text-background fill-current" />
             </div>
-            <span className="font-headline font-bold text-2xl tracking-tight">Zintl</span>
+            <span className="font-headline font-bold text-2xl tracking-tight">DocuMind</span>
           </Link>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
             Revolutionizing document productivity for the modern era. Fast, secure, and AI-powered.
@@ -84,7 +88,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-        <p>&copy; {currentYear} Zintl AI. All rights reserved.</p>
+        <p>&copy; {currentYear} DocuMind AI. All rights reserved.</p>
         <div className="flex gap-8">
           <span>Secure Document Processing</span>
           <span>Status: Active</span>

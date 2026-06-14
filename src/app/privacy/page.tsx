@@ -1,3 +1,7 @@
+/**
+ * @fileOverview Privacy policy for DocuMind.
+ */
+
 export default function PrivacyPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20 prose prose-invert">
@@ -6,7 +10,7 @@ export default function PrivacyPage() {
       
       <section className="mt-12">
         <h2 className="font-headline text-2xl font-bold">1. Information We Collect</h2>
-        <p>Zintl AI collects minimal data required to provide document processing services. We collect files you upload for the sole purpose of processing them.</p>
+        <p>DocuMind AI collects minimal data required to provide document processing services. We collect files you upload for the sole purpose of processing them.</p>
       </section>
 
       <section className="mt-8">
@@ -26,7 +30,7 @@ export default function PrivacyPage() {
 
       <section className="mt-12 p-8 glass rounded-3xl border-none">
         <h3 className="font-bold mb-4">Contact Us</h3>
-        <p className="m-0">If you have questions about our privacy practices, please reach out to us at privacy@zintl.ai</p>
+        <p className="m-0">If you have questions about our privacy practices, please reach out to us at privacy@documind.ai</p>
       </section>
     </div>
   );

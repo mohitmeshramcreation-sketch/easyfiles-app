@@ -1,12 +1,15 @@
+/**
+ * @fileOverview The about page for DocuMind.
+ */
 
 import { Zap, Shield, Heart } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-24">
-      <h1 className="font-headline text-5xl font-bold mb-8">About Zintl</h1>
+      <h1 className="font-headline text-5xl font-bold mb-8">About DocuMind</h1>
       <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-        Zintl was founded with a single mission: to make document productivity fast, accessible, and smart for everyone. We believe that file management shouldn't be a chore, and AI should be a partner in helping you understand your documents faster.
+        DocuMind was founded with a single mission: to make document productivity fast, accessible, and smart for everyone. We believe that file management shouldn't be a chore, and AI should be a partner in helping you understand your documents faster.
       </p>
 
       <div className="grid md:grid-cols-3 gap-8 mb-20">
