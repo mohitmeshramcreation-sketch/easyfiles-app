@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * @fileOverview Intelligent PDF compression tool.
+ * 
+ * - CompressPDFPage - Allows users to select compression levels and reduces PDF file size.
+ */
+
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';
 import { Button } from '@/components/ui/button';
@@ -20,7 +26,6 @@ export default function CompressPDFPage() {
     if (!files[0]) return;
     setIsLoading(true);
     
-    // Simulate smart compression based on level
     let p = 0;
     const interval = setInterval(() => {
       p += Math.random() * 20;
@@ -125,7 +130,7 @@ export default function CompressPDFPage() {
         <div className="grid md:grid-cols-2 gap-12 text-muted-foreground">
           <div className="space-y-4">
             <p>
-              Zintl's compression engine doesn't just lower DPI. It intelligently analyzes PDF structures, removing redundant metadata, optimizing embedded fonts, and using advanced image compression (JBIG2/JPEG2000) where applicable.
+              EasyFiles' compression engine doesn't just lower DPI. It intelligently analyzes PDF structures, removing redundant metadata, optimizing embedded fonts, and using advanced image compression where applicable.
             </p>
             <div className="flex items-center gap-2 text-primary font-bold">
               <ShieldCheck className="h-5 w-5" /> All processing is encrypted and private.

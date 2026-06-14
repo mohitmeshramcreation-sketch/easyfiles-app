@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * @fileOverview AI-powered PDF summarization tool.
+ * 
+ * - AIPDFSummaryPage - Handles file selection, AI processing via summarizePdf flow, and summary display.
+ */
+
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';
 import { summarizePdf } from '@/ai/flows/summarize-pdf-flow';
@@ -57,7 +63,6 @@ export default function AIPDFSummaryPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
-      {/* Tool Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-primary font-bold text-sm">
           <Sparkles className="h-4 w-4" />
@@ -69,7 +74,6 @@ export default function AIPDFSummaryPage() {
         </p>
       </div>
 
-      {/* Main Action Area */}
       <div className="mb-20">
         {!summary ? (
           <FileDropzone 
@@ -106,18 +110,16 @@ export default function AIPDFSummaryPage() {
         )}
       </div>
 
-      {/* Google AdSense placement area - Tool Sidebar/Below */}
       <div className="mb-20 h-24 bg-muted/20 border border-dashed rounded-xl flex items-center justify-center text-muted-foreground/30 text-[10px] tracking-widest uppercase">
         Advertisement
       </div>
 
-      {/* SEO Content Section */}
       <section className="prose prose-invert max-w-none py-12 border-t">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="font-headline text-3xl font-bold mb-6">How Zintl AI Summarizer Works</h2>
+            <h2 className="font-headline text-3xl font-bold mb-6">How EasyFiles AI Works</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Zintl uses state-of-the-art Large Language Models (LLMs) to analyze your PDF documents. Unlike traditional tools that just pull out random sentences, Zintl understands context, tone, and the logical structure of your document.
+              EasyFiles uses state-of-the-art Large Language Models (LLMs) to analyze your PDF documents. Unlike traditional tools that just pull out random sentences, our AI understands context, tone, and the logical structure of your document.
             </p>
             <ul className="space-y-4 text-muted-foreground mt-8">
               <li className="flex gap-3">
@@ -139,7 +141,7 @@ export default function AIPDFSummaryPage() {
             <div className="space-y-6">
               <div>
                 <h4 className="font-bold text-foreground mb-2">Is my data secure?</h4>
-                <p className="text-sm text-muted-foreground">Yes. Zintl uses bank-grade encryption and automatically deletes files 24 hours after processing.</p>
+                <p className="text-sm text-muted-foreground">Yes. EasyFiles uses bank-grade encryption and automatically deletes files 24 hours after processing.</p>
               </div>
               <div>
                 <h4 className="font-bold text-foreground mb-2">Can it summarize images?</h4>
