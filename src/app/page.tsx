@@ -1,8 +1,9 @@
+
 /**
  * @fileOverview The main landing page for EasyFiles.
  *
  * - Home - Displays the hero section, main tool focus, and the complete document tool suite.
- * Optimized for SEO with semantic headers and high-value keywords.
+ * Optimized for SEO with semantic headers and high-value keywords to dominate the "document tool" search category.
  */
 
 import { Zap, FileText, ImageIcon, Sparkles, Shield, Cpu, Clock, Trash2, ArrowRight } from 'lucide-react';
@@ -30,33 +31,33 @@ export default function Home() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background Orbs */}
+      {/* Background Orbs for high-end aesthetic */}
       <div className="absolute top-0 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-40 -right-40 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Hero Section */}
+      {/* Hero Section - Optimized with primary keywords in H1 */}
       <section className="relative pt-20 pb-32 px-4 md:px-8 max-w-7xl mx-auto text-center">
         <header>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-primary font-bold text-sm border-primary/20 animate-pulse">
             <Sparkles className="h-4 w-4" />
-            The World's Easiest File Tools ✨
+            The World's Easiest AI File Tools ✨
           </div>
           <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-[1.1]">
-            Your Files. <span className="text-gradient">Simpler.</span> Faster. Better.
+            Your Files. <span className="text-gradient">Simpler.</span> Smarter. Faster.
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-            Convert, compress, merge, and enhance documents instantly with EasyFiles. Professional-grade document tools, zero learning curve, 100% private.
+            Professional-grade AI document tools for the modern era. Convert, compress, merge, and summarize documents instantly with EasyFiles. 100% Private.
           </p>
         </header>
 
-        {/* Primary Action - Main Tool Focus */}
+        {/* Primary Action - Main Tool Focus for SEO and User Experience */}
         <div className="max-w-3xl mx-auto mb-20">
           <Link href="/tools/images-to-pdf">
             <div className="glass border-2 border-dashed border-primary/40 rounded-[2.5rem] p-12 group hover:border-primary hover:bg-primary/5 transition-all cursor-pointer shadow-2xl shadow-primary/10">
               <div className="bg-primary/10 p-5 rounded-3xl w-fit mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <ImageIcon className="h-12 w-12 text-primary" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-headline font-bold mb-3">Convert Images to PDF Online</h2>
+              <h2 className="text-2xl md:text-3xl font-headline font-bold mb-3">Convert Photos to PDF Online</h2>
               <p className="text-muted-foreground text-lg">Fast, high-quality conversion with reordering and professional layout control.</p>
               <div className="mt-8 flex justify-center">
                 <Button className="rounded-full px-10 py-6 text-lg font-bold shadow-xl shadow-primary/20">
@@ -67,7 +68,7 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Trust Badges */}
+        {/* Trust & Reliability Section */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
           {trustBadges.map((badge) => (
             <div key={badge.text} className="flex items-center gap-2 text-muted-foreground">
@@ -78,16 +79,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tools Grid */}
+      {/* Tools Grid - Semantic structure for better indexing */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-32">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 border-b border-white/5 pb-8">
           <div className="text-left">
-            <h2 className="font-headline text-4xl font-bold mb-4">Professional Document Utility Suite</h2>
+            <h2 className="font-headline text-4xl font-bold mb-4">Smart Document Utility Suite</h2>
             <p className="text-muted-foreground">Every tool is optimized for speed, precision, and privacy.</p>
           </div>
           <Link href="/pdf-tools">
             <Button variant="outline" className="rounded-full group hover:bg-white/5">
-              View All PDF Tools <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              View All Tools <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>
