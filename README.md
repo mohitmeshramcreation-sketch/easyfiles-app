@@ -11,6 +11,13 @@ If you see dependency errors during deployment:
    - **Key:** `NPM_FLAGS`
    - **Value:** `--legacy-peer-deps`
 
+## How to Solve "Root Directory Not Found"
+In the Cloudflare Dashboard settings:
+- **Root directory**: MUST be set to `/` (or leave it blank). Do NOT set it to `/src` or any other folder.
+- **Framework preset**: Select `Next.js`.
+- **Build command**: `npm run build`
+- **Build output directory**: `.vercel/output`
+
 ## Environment Variables
 To run the AI features (Scanner, Summary, Chat), you MUST set these variables in your hosting provider (Cloudflare or Firebase):
 
@@ -18,42 +25,6 @@ To run the AI features (Scanner, Summary, Chat), you MUST set these variables in
   - **Value:** [Get this from [Google AI Studio](https://aistudio.google.com/)]
 - **Variable Name:** `NEXT_PUBLIC_SITE_URL`
   - **Value:** `https://easyfiles.online`
-
-## How to Publish to GitHub
-
-1. **Create a new repository** on [GitHub](https://github.com/new).
-2. **Open your terminal** in the project's root folder.
-3. **Initialize Git & Commit**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit - EasyFiles Production Ready"
-   ```
-4. **Connect and Push**:
-   - Copy the "remote add" command from your GitHub repository page.
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-## How to Host on Cloudflare (Recommended)
-
-### 1. Set up Cloudflare Pages
-- Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
-- Go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-- Select your GitHub repository.
-
-### 2. Configure Build Settings
-- **Framework preset**: `Next.js`
-- **Build command**: `npm run build`
-- **Build output directory**: `.vercel/output`
-
-### 3. Add Environment Variables (IMPORTANT)
-- In Cloudflare Dashboard, go to **Settings** > **Environment variables**:
-  - Add `GEMINI_API_KEY` with your key from Google AI Studio.
-  - Add `NEXT_PUBLIC_SITE_URL` with `https://easyfiles.online`.
-  - Add `NPM_FLAGS` with `--legacy-peer-deps` to ensure the build succeeds.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
