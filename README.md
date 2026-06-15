@@ -26,38 +26,32 @@ EasyFiles is a high-performance, private, and AI-powered document utility suite.
    git push -u origin main
    ```
 
-## How to Host on Firebase (Recommended)
+## How to Host on Cloudflare (Recommended for Zero-Backend Feel)
 
-To deploy your app globally and connect your `.online` domain, follow these steps:
+Cloudflare Pages is the best platform for EasyFiles because it is incredibly fast and offers a massive free tier.
 
-### 1. Prepare your Repository
-- Ensure your code is pushed to your **GitHub** repository (using the steps above).
+### 1. Set up Cloudflare Pages
+- Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
+- Go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+- Select your GitHub repository.
 
-### 2. Set up Firebase
-- Go to the [Firebase Console](https://console.firebase.google.com/).
-- Click **Add Project** and create a new project named "EasyFiles".
-- Upgrade to the **Blaze Plan** (Pay-as-you-go). Note: There is a generous free tier, so small/medium usage often costs $0.
+### 2. Configure Build Settings
+- **Framework preset**: `Next.js`
+- **Build command**: `npm run build`
+- **Build output directory**: `.vercel/output` (Note: Cloudflare uses the Vercel output format for Next.js compatibility).
+- **Environment Variables**:
+  - Add `GEMINI_API_KEY`: [Your Google AI API Key]
+  - Add `NEXT_PUBLIC_SITE_URL`: `https://easyfiles.online`
 
-### 3. Enable App Hosting
-- In the left sidebar, go to **Build > App Hosting**.
-- Click **Get Started**.
-- Connect your GitHub account and select your repository.
-- Follow the wizard:
-  - **Region**: Select the one closest to your target users (e.g., `us-central1`).
-  - **Environment Variables**: You don't need to add any yet.
-- Click **Finish and Deploy**.
-
-### 4. Connect your Custom Domain (.online)
-- Once the deployment is finished, go to the **App Hosting** dashboard.
-- Select your backend and click **Settings**.
-- Find the **Custom Domains** section.
-- Add your `.online` domain and follow the instructions to update your DNS records (A and CNAME).
+### 3. Connect your Custom Domain (.online)
+- After deployment, go to the **Custom domains** tab in your Pages project.
+- Add your `.online` domain. Cloudflare will automatically handle the DNS and SSL for you.
 
 ## Core Features
-- **Images to PDF**: Advanced reordering, orientation control, and scaling.
+- **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
 - **AI Scanner**: OCR and document enhancement via Gemini AI.
 - **PDF Suite**: Merge, Split, and Compress tools running 100% in-browser for privacy.
 - **AI PDF Summary**: Instant insights from long documents.
 
 ## Privacy
-Most tools process files locally in the user's browser, meaning data never touches a server unless an AI feature is explicitly invoked.
+Our core tools (Images to PDF, Merge, Split) process files **locally in your browser**. Data never touches a server unless an AI feature is explicitly invoked, ensuring maximum privacy for your sensitive documents.
