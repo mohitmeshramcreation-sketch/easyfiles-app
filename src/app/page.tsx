@@ -1,7 +1,7 @@
 
 /**
  * @fileOverview The main landing page for EasyFiles.
- *
+ * 
  * - Home - Displays the hero section, main tool focus, and the complete document tool suite.
  * Optimized for SEO with semantic headers and high-value keywords to dominate the "document tool" search category.
  */
