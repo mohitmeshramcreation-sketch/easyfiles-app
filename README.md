@@ -1,6 +1,15 @@
+
 # EasyFiles - Smart AI Document Tools
 
 EasyFiles is a high-performance, private, and AI-powered document utility suite.
+
+## How to Solve Build Errors (ERESOLVE)
+If you see dependency errors during deployment:
+1. Ensure your `package.json` has `next` version `15.5.18` or higher.
+2. The included `.npmrc` file with `legacy-peer-deps=true` will handle conflicts automatically.
+3. In Cloudflare Pages Settings, you can also add an Environment Variable:
+   - **Key:** `NPM_FLAGS`
+   - **Value:** `--legacy-peer-deps`
 
 ## Environment Variables
 To run the AI features (Scanner, Summary, Chat), you MUST set these variables in your hosting provider (Cloudflare or Firebase):
@@ -46,22 +55,16 @@ Cloudflare Pages is the best platform for EasyFiles because it is incredibly fas
 ### 2. Configure Build Settings
 - **Framework preset**: `Next.js`
 - **Build command**: `npm run build`
-- **Build output directory**: `.vercel/output` (Cloudflare uses this for Next.js compatibility).
+- **Build output directory**: `.vercel/output`
 
 ### 3. Add Environment Variables (IMPORTANT)
-- During setup, or in **Settings** > **Environment variables**:
+- In Cloudflare Dashboard, go to **Settings** > **Environment variables**:
   - Add `GEMINI_API_KEY` with your key from Google AI Studio.
   - Add `NEXT_PUBLIC_SITE_URL` with `https://easyfiles.online`.
-
-### 4. Connect your Custom Domain (.online)
-- After deployment, go to the **Custom domains** tab in your Pages project.
-- Add your `.online` domain. Cloudflare handles DNS and SSL automatically.
+  - Add `NPM_FLAGS` with `--legacy-peer-deps` to avoid dependency conflicts.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
 - **AI Scanner**: OCR and document enhancement via Gemini AI.
 - **PDF Suite**: Merge, Split, and Compress tools running 100% in-browser for privacy.
 - **AI PDF Summary**: Instant insights from long documents.
-
-## Privacy
-Our core tools (Images to PDF, Merge, Split) process files **locally in your browser**. Data never touches a server unless an AI feature is explicitly invoked.
