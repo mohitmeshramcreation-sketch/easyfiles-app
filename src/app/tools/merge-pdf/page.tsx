@@ -157,7 +157,7 @@ export default function MergePDFPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <a 
                 href={mergedPdfUrl} 
-                download="documind-merged-document.pdf" 
+                download="easyfiles-merged-document.pdf" 
                 className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20"
               >
                 <Download className="mr-2 h-5 w-5" /> Download Merged PDF

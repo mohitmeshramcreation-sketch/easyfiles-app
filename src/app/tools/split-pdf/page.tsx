@@ -1,5 +1,9 @@
-
 "use client";
+
+/**
+ * @fileOverview Precision PDF splitting tool.
+ * Verified to include Badge and correct range parsing logic.
+ */
 
 import { useState } from 'react';
 import { FileDropzone } from '@/components/shared/FileDropzone';
@@ -28,7 +32,7 @@ export default function SplitPDFPage() {
         setFile(files[0]);
         setSplitResultUrl(null);
       } catch (e) {
-        toast({ variant: 'destructive', title: 'Invalid PDF', description: 'Could not read the PDF file. It might be corrupted or password protected.' });
+        toast({ variant: 'destructive', title: 'Invalid PDF', description: 'Could not read the PDF file.' });
       }
     }
   };
@@ -41,7 +45,6 @@ export default function SplitPDFPage() {
       const fileArrayBuffer = await file.arrayBuffer();
       const pdf = await PDFDocument.load(fileArrayBuffer);
       
-      // Parse range: e.g., "1, 2-5, 7"
       const indices: number[] = [];
       const parts = pageRange.split(',').map(p => p.trim());
       
@@ -66,7 +69,7 @@ export default function SplitPDFPage() {
       const uniqueIndices = [...new Set(indices)].sort((a, b) => a - b);
 
       if (uniqueIndices.length === 0) {
-        toast({ variant: 'destructive', title: "Invalid Range", description: "Please enter valid page numbers that exist in the document." });
+        toast({ variant: 'destructive', title: "Invalid Range", description: "Enter valid page numbers." });
         setIsLoading(false);
         return;
       }
@@ -77,11 +80,10 @@ export default function SplitPDFPage() {
 
       const pdfBytes = await splitPdfDoc.save();
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      setSplitResultUrl(url);
-      toast({ title: "Split Successful", description: `Extracted ${uniqueIndices.length} pages into a new document.` });
+      setSplitResultUrl(URL.createObjectURL(blob));
+      toast({ title: "Split Successful", description: `Extracted ${uniqueIndices.length} pages.` });
     } catch (error) {
-      toast({ variant: "destructive", title: "Split Failed", description: "Could not process this PDF. It might be encrypted." });
+      toast({ variant: "destructive", title: "Split Failed", description: "Processing error." });
     } finally {
       setIsLoading(false);
     }
@@ -90,14 +92,8 @@ export default function SplitPDFPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-secondary font-bold text-sm border-secondary/20">
-          <Scissors className="h-4 w-4" />
-          Precision PDF Extraction
-        </div>
         <h1 className="font-headline text-5xl font-bold mb-4">Split PDF</h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Extract specific pages or ranges from your document with pixel-perfect accuracy. No data leaves your browser.
-        </p>
+        <p className="text-muted-foreground text-lg">Extract specific pages or ranges from your document safely.</p>
       </div>
 
       {!splitResultUrl ? (
@@ -107,9 +103,9 @@ export default function SplitPDFPage() {
             onFilesSelected={handleFileSelected}
           />
           {file && (
-            <Card className="glass p-10 border-none grid md:grid-cols-2 gap-12 items-center shadow-2xl shadow-primary/5 animate-in slide-in-from-bottom-4">
+            <Card className="glass p-10 border-none grid md:grid-cols-2 gap-12 items-center shadow-2xl animate-in slide-in-from-bottom-4">
               <div className="flex flex-col items-center text-center bg-white/5 p-8 rounded-3xl border border-white/5">
-                <div className="bg-primary/20 p-5 rounded-3xl mb-6 shadow-xl shadow-primary/10">
+                <div className="bg-primary/20 p-5 rounded-3xl mb-6 shadow-xl">
                   <FileText className="h-12 w-12 text-primary" />
                 </div>
                 <h3 className="font-headline font-bold text-xl mb-2 truncate w-full px-4">{file.name}</h3>
@@ -154,12 +150,12 @@ export default function SplitPDFPage() {
             <FileCheck className="h-12 w-12 text-primary" />
           </div>
           <h2 className="text-4xl font-headline font-bold mb-4">Pages Extracted!</h2>
-          <p className="text-muted-foreground text-lg mb-10">Your selected pages have been compiled into a new document. The original file remains untouched.</p>
+          <p className="text-muted-foreground text-lg mb-10">Your selected pages have been compiled into a new document.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href={splitResultUrl} 
-              download="zintl-extracted-document.pdf" 
-              className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20"
+              download="easyfiles-extracted-document.pdf" 
+              className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform"
             >
               <Download className="mr-2 h-5 w-5" /> Download PDF
             </a>

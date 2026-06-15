@@ -2,12 +2,20 @@
 
 EasyFiles is a high-performance, private, and AI-powered document utility suite.
 
+## Environment Variables
+To run the AI features (Scanner, Summary, Chat), you MUST set these variables in your hosting provider (Cloudflare or Firebase):
+
+- **Variable Name:** `GEMINI_API_KEY`
+  - **Value:** [Get this from [Google AI Studio](https://aistudio.google.com/)]
+- **Variable Name:** `NEXT_PUBLIC_SITE_URL`
+  - **Value:** `https://easyfiles.online`
+
 ## How to Publish to GitHub
 
 1. **Create a new repository** on [GitHub](https://github.com/new).
    - Give it a name like `easyfiles-app`.
    - Keep it Public or Private as you prefer.
-   - Do **not** initialize with a README, license, or .gitignore (as the project already has them).
+   - Do **not** initialize with a README, license, or .gitignore.
 
 2. **Open your terminal** in the project's root folder.
 
@@ -26,7 +34,7 @@ EasyFiles is a high-performance, private, and AI-powered document utility suite.
    git push -u origin main
    ```
 
-## How to Host on Cloudflare (Recommended for Zero-Backend Feel)
+## How to Host on Cloudflare (Recommended)
 
 Cloudflare Pages is the best platform for EasyFiles because it is incredibly fast and offers a massive free tier.
 
@@ -38,14 +46,16 @@ Cloudflare Pages is the best platform for EasyFiles because it is incredibly fas
 ### 2. Configure Build Settings
 - **Framework preset**: `Next.js`
 - **Build command**: `npm run build`
-- **Build output directory**: `.vercel/output` (Note: Cloudflare uses the Vercel output format for Next.js compatibility).
-- **Environment Variables**:
-  - Add `GEMINI_API_KEY`: [Your Google AI API Key]
-  - Add `NEXT_PUBLIC_SITE_URL`: `https://easyfiles.online`
+- **Build output directory**: `.vercel/output` (Cloudflare uses this for Next.js compatibility).
 
-### 3. Connect your Custom Domain (.online)
+### 3. Add Environment Variables (IMPORTANT)
+- During setup, or in **Settings** > **Environment variables**:
+  - Add `GEMINI_API_KEY` with your key from Google AI Studio.
+  - Add `NEXT_PUBLIC_SITE_URL` with `https://easyfiles.online`.
+
+### 4. Connect your Custom Domain (.online)
 - After deployment, go to the **Custom domains** tab in your Pages project.
-- Add your `.online` domain. Cloudflare will automatically handle the DNS and SSL for you.
+- Add your `.online` domain. Cloudflare handles DNS and SSL automatically.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
@@ -54,4 +64,4 @@ Cloudflare Pages is the best platform for EasyFiles because it is incredibly fas
 - **AI PDF Summary**: Instant insights from long documents.
 
 ## Privacy
-Our core tools (Images to PDF, Merge, Split) process files **locally in your browser**. Data never touches a server unless an AI feature is explicitly invoked, ensuring maximum privacy for your sensitive documents.
+Our core tools (Images to PDF, Merge, Split) process files **locally in your browser**. Data never touches a server unless an AI feature is explicitly invoked.
