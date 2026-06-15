@@ -1,8 +1,8 @@
 
 /**
- * @fileOverview The root layout component for EasyFiles.
- * Includes global SEO keywords, fonts, and core UI providers.
- * Optimized for high search engine visibility in the document tools category.
+ * @fileOverview Root Layout for EasyFiles - Smart AI Document Tools.
+ * Purpose: Manages global SEO metadata, high-performance font loading, and core UI providers.
+ * Optimization: Configured for maximum visibility in the document utility search category.
  */
 
 import type {Metadata} from 'next';
@@ -16,15 +16,18 @@ const ogImage = PlaceHolderImages.find(img => img.id === 'og-image')?.imageUrl;
 const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.imageUrl;
 
 export const metadata: Metadata = {
-  title: 'EasyFiles - Smart AI Document Tools',
-  description: 'The #1 AI-powered document utility suite. Convert images to PDF, summarize documents with AI, compress, merge, and split PDFs instantly. 100% private and fast.',
+  title: 'EasyFiles - Smart AI Document Tools | #1 Online PDF Suite',
+  description: 'The world\'s fastest AI-powered document utility. Convert images to PDF, summarize long documents with AI, compress, merge, and split PDFs instantly. 100% private, secure, and professional.',
   keywords: [
     'EasyFiles', 'PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 
     'AI document tools', 'private file processing', 'online document suite', 
     'merge pdf', 'split pdf', 'rotate pdf', 'protect pdf', 'ai document translator', 
     'free pdf tools', 'convert jpg to pdf', 'extract text from image', 
     'document summarizer', 'fast pdf tools', 'best pdf editor online', 
-    'secure pdf merger', 'ocr scanner online free', 'gemini ai document tools'
+    'secure pdf merger', 'ocr scanner online free', 'gemini ai document tools',
+    'best pdf tools 2026', 'AI powered document management', 'secure online PDF editor',
+    'high speed PDF converter', 'private OCR scanner', 'bulk image to pdf',
+    'pdf to word ai', 'smart pdf summarizer', 'pdf chat bot', 'easy files online'
   ],
   metadataBase: new URL('https://easyfiles.online'),
   openGraph: {
