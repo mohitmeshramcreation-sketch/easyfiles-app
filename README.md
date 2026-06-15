@@ -5,7 +5,7 @@ EasyFiles is a high-performance, private, and AI-powered document utility suite.
 
 ## How to Solve Build Errors (ERESOLVE)
 If you see dependency errors during deployment:
-1. Ensure your `package.json` has `next` version `15.1.0` or higher.
+1. Ensure your `package.json` has `next` version `15.5.18` or higher.
 2. The included `.npmrc` file with `legacy-peer-deps=true` handles conflicts automatically.
 3. In Cloudflare Pages Settings, you can also add an Environment Variable:
    - **Key:** `NPM_FLAGS`
