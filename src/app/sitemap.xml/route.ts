@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-
 /**
- * @fileOverview Generates a sitemap for EasyFiles.
+ * @fileOverview Sitemap generator for EasyFiles.
  */
+
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   const baseUrl = 'https://easyfiles.online';
@@ -11,11 +11,12 @@ export async function GET() {
     'compress-pdf',
     'merge-pdf',
     'split-pdf',
-    'jpg-to-pdf',
-    'pdf-to-word',
+    'rotate-pdf',
+    'protect-pdf',
     'ai-pdf-summary',
     'pdf-chat',
     'ai-scanner',
+    'ai-translator',
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

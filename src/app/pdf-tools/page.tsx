@@ -1,7 +1,10 @@
-import { FileText, Clock, Shield, Sparkles, MessageSquare, ArrowRight, ImageIcon } from 'lucide-react';
+/**
+ * @fileOverview Overview page for all PDF-related tools in EasyFiles.
+ */
+
+import { FileText, Clock, Shield, Sparkles, MessageSquare, ArrowRight, ImageIcon, RotateCw, Lock, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 
 export default function PDFToolsPage() {
   const tools = [
@@ -9,8 +12,11 @@ export default function PDFToolsPage() {
     { title: 'Compress PDF', desc: 'Reduce file size while keeping quality.', icon: Clock, href: '/tools/compress-pdf' },
     { title: 'Merge PDF', desc: 'Combine multiple PDFs into one document.', icon: FileText, href: '/tools/merge-pdf' },
     { title: 'Split PDF', desc: 'Extract specific pages or ranges.', icon: Shield, href: '/tools/split-pdf' },
+    { title: 'Rotate PDF', desc: 'Quickly change page orientation.', icon: RotateCw, href: '/tools/rotate-pdf' },
+    { title: 'Protect PDF', desc: 'Add password security to files.', icon: Lock, href: '/tools/protect-pdf' },
     { title: 'AI PDF Summary', desc: 'Get key insights instantly with AI.', icon: Sparkles, href: '/tools/ai-pdf-summary' },
     { title: 'PDF Chat', desc: 'Ask questions to your documents.', icon: MessageSquare, href: '/tools/pdf-chat' },
+    { title: 'AI Translator', desc: 'Translate PDFs with Gemini AI.', icon: Globe, href: '/tools/ai-translator' },
   ];
 
   return (
@@ -18,7 +24,7 @@ export default function PDFToolsPage() {
       <div className="mb-16">
         <h1 className="font-headline text-5xl font-bold mb-4">PDF Tools</h1>
         <p className="text-muted-foreground text-xl max-w-2xl">
-          Everything you need to manage, convert, and understand your documents.
+          Everything you need to manage, convert, and understand your documents efficiently.
         </p>
       </div>
 

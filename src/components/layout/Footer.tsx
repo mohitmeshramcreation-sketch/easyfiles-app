@@ -1,16 +1,16 @@
-import Link from 'next/link';
-import { Zap, Github, Twitter, Instagram } from 'lucide-react';
-
 /**
  * @fileOverview Global footer for EasyFiles.
  */
+
+import Link from 'next/link';
+import { Zap, Github, Twitter, Instagram } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const sections = [
     {
-      title: 'Tools',
+      title: 'Popular Tools',
       links: [
         { name: 'Images to PDF', href: '/tools/images-to-pdf' },
         { name: 'Compress PDF', href: '/tools/compress-pdf' },
@@ -19,9 +19,10 @@ export function Footer() {
       ],
     },
     {
-      title: 'AI Tools',
+      title: 'AI Intelligence',
       links: [
         { name: 'AI PDF Summary', href: '/tools/ai-pdf-summary' },
+        { name: 'AI Translator', href: '/tools/ai-translator' },
         { name: 'PDF Chat', href: '/tools/pdf-chat' },
         { name: 'AI Scanner', href: '/tools/ai-scanner' },
       ],
@@ -54,7 +55,7 @@ export function Footer() {
             <span className="font-headline font-bold text-2xl tracking-tight">EasyFiles</span>
           </Link>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
-            Revolutionizing document productivity for the modern era. Simple, fast, secure, and AI-powered.
+            Fast, private, and AI-enhanced document tools for everyone. Optimized for precision and privacy.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="p-2 glass rounded-full hover:text-primary transition-colors">
@@ -88,10 +89,10 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-        <p>&copy; {currentYear} EasyFiles AI. All rights reserved.</p>
+        <p>&copy; {currentYear} EasyFiles. All rights reserved.</p>
         <div className="flex gap-8">
-          <span>Secure Document Processing</span>
-          <span>Status: Active</span>
+          <span>Global Content Delivery</span>
+          <span>Status: High Speed</span>
         </div>
       </div>
     </footer>

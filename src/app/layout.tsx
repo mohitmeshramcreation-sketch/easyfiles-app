@@ -1,3 +1,8 @@
+/**
+ * @fileOverview The root layout component for EasyFiles.
+ * Includes global SEO keywords, fonts, and core UI providers.
+ */
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
@@ -5,19 +10,17 @@ import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-/**
- * @fileOverview The root layout component of the EasyFiles application.
- *
- * - RootLayout - The main layout wrapper providing global fonts, styles, and navigation.
- */
-
 const ogImage = PlaceHolderImages.find(img => img.id === 'og-image')?.imageUrl;
 const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.imageUrl;
 
 export const metadata: Metadata = {
   title: 'EasyFiles - Smart AI Document Tools',
   description: 'Your Files. Smarter. Faster. Better. AI-powered PDF and image tools for the modern era.',
-  keywords: ['PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 'private file processing', 'online document suite', 'EasyFiles'],
+  keywords: [
+    'PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 
+    'private file processing', 'online document suite', 'EasyFiles', 'merge pdf', 
+    'split pdf', 'rotate pdf', 'protect pdf', 'ai document translator', 'free pdf tools'
+  ],
   metadataBase: new URL('https://easyfiles.online'),
   openGraph: {
     type: 'website',
