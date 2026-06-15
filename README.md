@@ -5,8 +5,8 @@ EasyFiles is a high-performance, private, and AI-powered document utility suite.
 
 ## How to Solve Build Errors (ERESOLVE)
 If you see dependency errors during deployment:
-1. Ensure your `package.json` has `next` version `15.5.18` or higher.
-2. The included `.npmrc` file with `legacy-peer-deps=true` will handle conflicts automatically.
+1. Ensure your `package.json` has `next` version `15.1.0` or higher.
+2. The included `.npmrc` file with `legacy-peer-deps=true` handles conflicts automatically.
 3. In Cloudflare Pages Settings, you can also add an Environment Variable:
    - **Key:** `NPM_FLAGS`
    - **Value:** `--legacy-peer-deps`
@@ -22,19 +22,13 @@ To run the AI features (Scanner, Summary, Chat), you MUST set these variables in
 ## How to Publish to GitHub
 
 1. **Create a new repository** on [GitHub](https://github.com/new).
-   - Give it a name like `easyfiles-app`.
-   - Keep it Public or Private as you prefer.
-   - Do **not** initialize with a README, license, or .gitignore.
-
 2. **Open your terminal** in the project's root folder.
-
 3. **Initialize Git & Commit**:
    ```bash
    git init
    git add .
    git commit -m "Initial commit - EasyFiles Production Ready"
    ```
-
 4. **Connect and Push**:
    - Copy the "remote add" command from your GitHub repository page.
    ```bash
@@ -44,8 +38,6 @@ To run the AI features (Scanner, Summary, Chat), you MUST set these variables in
    ```
 
 ## How to Host on Cloudflare (Recommended)
-
-Cloudflare Pages is the best platform for EasyFiles because it is incredibly fast and offers a massive free tier.
 
 ### 1. Set up Cloudflare Pages
 - Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
@@ -61,7 +53,7 @@ Cloudflare Pages is the best platform for EasyFiles because it is incredibly fas
 - In Cloudflare Dashboard, go to **Settings** > **Environment variables**:
   - Add `GEMINI_API_KEY` with your key from Google AI Studio.
   - Add `NEXT_PUBLIC_SITE_URL` with `https://easyfiles.online`.
-  - Add `NPM_FLAGS` with `--legacy-peer-deps` to avoid dependency conflicts.
+  - Add `NPM_FLAGS` with `--legacy-peer-deps` to ensure the build succeeds.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
