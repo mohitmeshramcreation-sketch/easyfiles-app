@@ -1,5 +1,6 @@
 /**
  * @fileOverview Global footer for EasyFiles.
+ * Includes semantic links to all major tools for improved SEO crawlability.
  */
 
 import Link from 'next/link';
@@ -10,12 +11,13 @@ export function Footer() {
 
   const sections = [
     {
-      title: 'Popular Tools',
+      title: 'Popular PDF Tools',
       links: [
         { name: 'Images to PDF', href: '/tools/images-to-pdf' },
         { name: 'Compress PDF', href: '/tools/compress-pdf' },
         { name: 'Merge PDF', href: '/tools/merge-pdf' },
         { name: 'Split PDF', href: '/tools/split-pdf' },
+        { name: 'Rotate PDF', href: '/tools/rotate-pdf' },
       ],
     },
     {
@@ -24,22 +26,23 @@ export function Footer() {
         { name: 'AI PDF Summary', href: '/tools/ai-pdf-summary' },
         { name: 'AI Translator', href: '/tools/ai-translator' },
         { name: 'PDF Chat', href: '/tools/pdf-chat' },
-        { name: 'AI Scanner', href: '/tools/ai-scanner' },
+        { name: 'AI Scanner & OCR', href: '/tools/ai-scanner' },
       ],
     },
     {
-      title: 'Company',
+      title: 'EasyFiles',
       links: [
-        { name: 'About', href: '/about' },
+        { name: 'About Us', href: '/about' },
         { name: 'Contact', href: '/contact' },
-        { name: 'Pricing', href: '/pricing' },
+        { name: 'Pricing Plans', href: '/pricing' },
+        { name: 'Sitemap', href: '/sitemap.xml' },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { name: 'Privacy', href: '/privacy' },
-        { name: 'Terms', href: '/terms' },
+        { name: 'Privacy Policy', href: '/privacy' },
+        { name: 'Terms of Service', href: '/terms' },
       ],
     },
   ];
@@ -55,7 +58,7 @@ export function Footer() {
             <span className="font-headline font-bold text-2xl tracking-tight">EasyFiles</span>
           </Link>
           <p className="text-muted-foreground max-w-sm leading-relaxed">
-            Fast, private, and AI-enhanced document tools for everyone. Optimized for precision and privacy.
+            Fast, private, and AI-enhanced document tools for everyone. Optimized for precision, speed, and privacy. The best way to manage your documents online.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="p-2 glass rounded-full hover:text-primary transition-colors">
@@ -89,10 +92,10 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-        <p>&copy; {currentYear} EasyFiles. All rights reserved.</p>
+        <p>&copy; {currentYear} EasyFiles - Smart AI Document Tools. All rights reserved.</p>
         <div className="flex gap-8">
-          <span>Global Content Delivery</span>
-          <span>Status: High Speed</span>
+          <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Global Content Delivery</span>
+          <span>Status: Optimized</span>
         </div>
       </div>
     </footer>

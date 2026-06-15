@@ -15,11 +15,12 @@ const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.
 
 export const metadata: Metadata = {
   title: 'EasyFiles - Smart AI Document Tools',
-  description: 'Your Files. Smarter. Faster. Better. AI-powered PDF and image tools for the modern era.',
+  description: 'Your Files. Smarter. Faster. Better. AI-powered PDF and image tools for the modern era. Convert, compress, and enhance documents with EasyFiles.',
   keywords: [
     'PDF converter', 'images to pdf', 'AI scanner', 'PDF summary', 'AI document tools', 
     'private file processing', 'online document suite', 'EasyFiles', 'merge pdf', 
-    'split pdf', 'rotate pdf', 'protect pdf', 'ai document translator', 'free pdf tools'
+    'split pdf', 'rotate pdf', 'protect pdf', 'ai document translator', 'free pdf tools',
+    'convert jpg to pdf', 'extract text from image', 'document summarizer', 'fast pdf tools'
   ],
   metadataBase: new URL('https://easyfiles.online'),
   openGraph: {
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'EasyFiles - Smart AI Document Tools',
-    description: 'Convert, compress, and enhance documents with EasyFiles AI.',
+    description: 'Convert, compress, and enhance documents with EasyFiles AI. 100% Private.',
     images: [twitterImage || ''],
   },
 };
@@ -58,7 +59,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased min-h-screen flex flex-col bg-background selection:bg-primary selection:text-primary-foreground">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <div className="flex-1">{children}</div>
         <Footer />
         <Toaster />
       </body>

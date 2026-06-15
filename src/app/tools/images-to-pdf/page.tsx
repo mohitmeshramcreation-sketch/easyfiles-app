@@ -1,9 +1,11 @@
 "use client";
 
 /**
- * @fileOverview The primary tool for converting multiple images into a high-quality PDF.
- *
- * - ImagesToPDFPage - A functional client component that manages image uploads, reordering, and PDF generation.
+ * @fileOverview Images to PDF Converter - Our Flagship Tool.
+ * 
+ * - Features: Bulk upload, drag-and-drop reordering, A4 Portrait/Landscape orientation, Fit-to-page scaling.
+ * - Privacy: All image processing is handled locally in the browser.
+ * - Documentation: Comprehensive @fileOverview added for maintainability.
  */
 
 import { useState } from 'react';
@@ -64,16 +66,13 @@ export default function ImagesToPDFPage() {
           } else if (file.type === 'image/png') {
             image = await pdfDoc.embedPng(imageBytes);
           } else {
-            console.warn(`Skipping unsupported format: ${file.type}`);
             continue;
           }
         } catch (e) {
-          console.error(`Error embedding ${file.name}:`, e);
           continue;
         }
 
         const isLandscape = orientation === 'landscape';
-        // A4 Standard points
         const pageWidth = isLandscape ? 841.89 : 595.28;
         const pageHeight = isLandscape ? 595.28 : 841.89;
 
@@ -100,7 +99,7 @@ export default function ImagesToPDFPage() {
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       setPdfUrl(url);
-      toast({ title: "Conversion Complete", description: `Successfully converted ${imageFiles.length} images.` });
+      toast({ title: "Conversion Complete", description: `Successfully converted ${imageFiles.length} images to PDF.` });
     } catch (error) {
       toast({ variant: "destructive", title: "Conversion Error", description: "An unexpected error occurred during PDF generation." });
     } finally {
@@ -110,16 +109,16 @@ export default function ImagesToPDFPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <div className="text-center mb-12">
+      <header className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-primary font-bold text-sm border-primary/20">
           <Sparkles className="h-4 w-4" />
-          Advanced Image to PDF Workflow
+          Advanced Image to PDF Converter
         </div>
-        <h1 className="font-headline text-5xl font-bold mb-4">Images to PDF</h1>
+        <h1 className="font-headline text-5xl font-bold mb-4">Convert Images to PDF</h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          The most powerful tool for combining your photos into a single, high-quality document. Reorder, rotate, and scale with ease.
+          The most powerful tool for combining your photos into a single, high-quality document. Reorder, rotate, and scale your images for the perfect output.
         </p>
-      </div>
+      </header>
 
       {!pdfUrl ? (
         <div className="grid lg:grid-cols-4 gap-8 items-start">
@@ -134,11 +133,11 @@ export default function ImagesToPDFPage() {
               <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
                 <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-headline font-bold text-xl">Order Images</h3>
-                    <Badge variant="secondary" className="bg-primary/20 text-primary border-none">{imageFiles.length} Files</Badge>
+                    <h3 className="font-headline font-bold text-xl">Image Sequence</h3>
+                    <Badge variant="secondary" className="bg-primary/20 text-primary border-none">{imageFiles.length} Photos Selected</Badge>
                   </div>
                   <Button variant="ghost" size="sm" onClick={() => setImageFiles([])} className="text-muted-foreground hover:text-destructive">
-                    Clear All
+                    Clear Selection
                   </Button>
                 </div>
                 <div className="grid grid-cols-1 gap-3">
@@ -173,7 +172,7 @@ export default function ImagesToPDFPage() {
             <Card className="glass p-6 border-none shadow-2xl shadow-primary/5">
               <h3 className="font-headline font-bold text-xl mb-6 flex items-center gap-2">
                 <Layout className="h-5 w-5 text-primary" />
-                Layout Settings
+                PDF Settings
               </h3>
               
               <div className="space-y-6">
@@ -184,8 +183,8 @@ export default function ImagesToPDFPage() {
                       <SelectValue placeholder="Select orientation" />
                     </SelectTrigger>
                     <SelectContent className="glass border-white/10">
-                      <SelectItem value="portrait">Portrait (A4)</SelectItem>
-                      <SelectItem value="landscape">Landscape (A4)</SelectItem>
+                      <SelectItem value="portrait">Portrait (A4 Vertical)</SelectItem>
+                      <SelectItem value="landscape">Landscape (A4 Horizontal)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -197,8 +196,8 @@ export default function ImagesToPDFPage() {
                       <SelectValue placeholder="Select scaling" />
                     </SelectTrigger>
                     <SelectContent className="glass border-white/10">
-                      <SelectItem value="fit">Fit to Page (Auto)</SelectItem>
-                      <SelectItem value="original">Original Size</SelectItem>
+                      <SelectItem value="fit">Fit to Page (Auto Adjust)</SelectItem>
+                      <SelectItem value="original">Original Image Size</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -208,13 +207,13 @@ export default function ImagesToPDFPage() {
                   onClick={convertToPdf} 
                   disabled={isLoading || imageFiles.length === 0}
                 >
-                  {isLoading ? "Processing..." : `Convert to PDF`}
+                  {isLoading ? "Processing PDF..." : `Generate My PDF`}
                 </Button>
                 
                 <div className="flex items-start gap-2 bg-white/5 p-4 rounded-xl border border-white/5">
                   <AlertCircle className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
                   <p className="text-[10px] text-muted-foreground leading-relaxed">
-                    Processing occurs locally in your browser. No images are uploaded to our database for privacy.
+                    100% Secure: Image processing occurs entirely in your browser. No files are uploaded to our servers for this conversion.
                   </p>
                 </div>
               </div>
@@ -226,18 +225,18 @@ export default function ImagesToPDFPage() {
           <div className="bg-primary/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
             <FileCheck className="h-12 w-12 text-primary" />
           </div>
-          <h2 className="text-4xl font-headline font-bold mb-4 tracking-tight">PDF is Ready!</h2>
-          <p className="text-muted-foreground text-lg mb-10">We've compiled your images into a professional PDF document. Your privacy was maintained throughout.</p>
+          <h2 className="text-4xl font-headline font-bold mb-4 tracking-tight">Your PDF is Ready!</h2>
+          <p className="text-muted-foreground text-lg mb-10">We've compiled your photos into a professional document. Your privacy was maintained locally.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href={pdfUrl} 
-              download="zintl-converted-document.pdf" 
+              download="easyfiles-converted-document.pdf" 
               className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-12 text-lg font-bold text-primary-foreground hover:scale-105 transition-transform shadow-xl shadow-primary/20"
             >
-              <Download className="mr-2 h-5 w-5" /> Download PDF
+              <Download className="mr-2 h-5 w-5" /> Download PDF Now
             </a>
             <Button variant="outline" className="rounded-full px-12 h-14 text-lg hover:bg-white/5" onClick={() => { setImageFiles([]); setPdfUrl(null); }}>
-              Start New Batch
+              Start Another Conversion
             </Button>
           </div>
         </Card>
