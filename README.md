@@ -11,7 +11,7 @@ To ensure a successful deployment on Cloudflare Pages, use the following setting
 - **Framework preset**: `Next.js`
 - **Build command**: `npm run build`
 - **Build output directory**: `.vercel/output`
-- **Root directory**: `/` (Leave blank or set to `/`)
+- **Root directory**: `/`
 
 ### 2. Environment Variables
 Set these under **Settings > Environment variables**:
