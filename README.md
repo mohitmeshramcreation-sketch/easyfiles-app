@@ -5,7 +5,7 @@ EasyFiles is a high-performance, private, and AI-powered document utility suite.
 
 ## Cloudflare Pages Deployment Configuration
 
-To ensure a successful deployment on Cloudflare Pages, use the following settings:
+To ensure a successful deployment on Cloudflare Pages, use the following settings in your Cloudflare Dashboard:
 
 ### 1. Build Settings
 - **Framework preset**: `Next.js`
@@ -14,7 +14,7 @@ To ensure a successful deployment on Cloudflare Pages, use the following setting
 - **Root directory**: `/` (Leave blank or set to `/`)
 
 ### 2. Environment Variables
-You must set these in the Cloudflare Dashboard under **Settings > Environment variables**:
+Set these under **Settings > Environment variables**:
 
 - **Variable Name:** `GEMINI_API_KEY`
   - **Value:** [Your API Key from Google AI Studio]
@@ -22,6 +22,8 @@ You must set these in the Cloudflare Dashboard under **Settings > Environment va
   - **Value:** `https://easyfiles.online`
 - **Variable Name:** `NODE_VERSION`
   - **Value:** `22.16.0`
+- **Variable Name:** `NPM_FLAGS`
+  - **Value:** `--legacy-peer-deps`
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
