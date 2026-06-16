@@ -1,7 +1,7 @@
 
 /**
  * @fileOverview Sitemap generator for EasyFiles.
- * Includes all new informational and legal pages for better indexing.
+ * Updated with new visual and AI tools.
  */
 
 import { NextResponse } from 'next/server';
@@ -19,6 +19,9 @@ export async function GET() {
     'pdf-chat',
     'ai-scanner',
     'ai-translator',
+    'organize-pdf',
+    'watermark-pdf',
+    'ai-redact-pdf'
   ];
 
   const infoPages = [
