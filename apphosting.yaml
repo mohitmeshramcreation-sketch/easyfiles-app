@@ -4,10 +4,12 @@
 runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
-  maxInstances: 5
+  maxInstances: 10
   memory: 1024Mi
   cpu: 1
 
 env:
   - variable: NEXT_PUBLIC_SITE_URL
     value: https://easyfiles.online
+  # Note: Sensitive keys like GEMINI_API_KEY should be added as 
+  # Secrets in the Firebase App Hosting dashboard.
