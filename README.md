@@ -1,32 +1,41 @@
 
 # EasyFiles - Smart AI Document Tools
 
-EasyFiles is a high-performance, private, and AI-powered document utility suite.
+EasyFiles is a high-performance, private, and AI-powered document utility suite built with Next.js.
 
-## Cloudflare Pages Deployment Configuration
+## Vercel Deployment Instructions
 
-To ensure a successful deployment on Cloudflare Pages, use the following settings in your Cloudflare Dashboard:
+Deploying EasyFiles to Vercel is the recommended method for maximum performance and stability.
 
-### 1. Build Settings
-- **Framework preset**: `Next.js`
-- **Build command**: `npm run build`
-- **Build output directory**: `.vercel/output`
-- **Root directory**: `/`
+### 1. Push to GitHub
+Ensure your latest code is pushed to a GitHub, GitLab, or Bitbucket repository.
 
-### 2. Environment Variables
-Set these under **Settings > Environment variables**:
+### 2. Import to Vercel
+1. Log in to [Vercel](https://vercel.com).
+2. Click **Add New** > **Project**.
+3. Import your `easyfiles-app` repository.
 
-- **Variable Name:** `GEMINI_API_KEY`
-  - **Value:** [Your API Key from Google AI Studio]
-- **Variable Name:** `NEXT_PUBLIC_SITE_URL`
-  - **Value:** `https://easyfiles.online`
-- **Variable Name:** `NODE_VERSION`
-  - **Value:** `22.16.0`
-- **Variable Name:** `NPM_FLAGS`
-  - **Value:** `--legacy-peer-deps`
+### 3. Configure Environment Variables
+In the Vercel project settings, add the following environment variables:
+
+- `GEMINI_API_KEY`: Your API Key from [Google AI Studio](https://aistudio.google.com/).
+- `NEXT_PUBLIC_SITE_URL`: Your production domain (e.g., `https://easyfiles.online`).
+
+**Firebase Configuration:**
+- `NEXT_PUBLIC_FIREBASE_API_KEY`
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NEXT_PUBLIC_FIREBASE_APP_ID`
+
+### 4. Deploy
+Click **Deploy**. Vercel will automatically detect Next.js and handle the build process.
 
 ## Core Features
 - **Images to PDF**: Advanced reordering, orientation control, and scaling. (100% Private, Browser-based)
 - **AI Scanner**: OCR and document enhancement via Gemini AI.
-- **PDF Suite**: Merge, Split, and Compress tools running 100% in-browser for privacy.
+- **AI PDF Redactor**: Automatically identify and hide sensitive information (PII).
+- **PDF Suite**: Merge, Split, Organize, and Watermark tools running in-browser.
 - **AI PDF Summary**: Instant insights from long documents.
+- **Developer API**: Secure API key management for programmatic access.
