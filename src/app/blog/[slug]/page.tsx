@@ -1,6 +1,7 @@
 
 /**
  * @fileOverview Individual blog post page for EasyFiles.
+ * Updated for Next.js 15 Promise-based params.
  */
 
 import { Metadata } from 'next';
@@ -51,16 +52,29 @@ const getPost = (slug: string) => {
   return posts[slug];
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getPost(params.slug);
+/**
+ * Ensures all blog posts are pre-rendered during build.
+ */
+export async function generateStaticParams() {
+  return [
+    { slug: 'reduce-pdf-size-without-losing-quality' },
+    { slug: 'best-free-pdf-tools-for-students' },
+    { slug: 'how-ai-can-help-manage-documents' },
+  ];
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
   return {
     title: `${post?.title} | EasyFiles Blog`,
     description: post?.excerpt,
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPost(slug);
 
   if (!post) return <div className="py-20 text-center">Post not found</div>;
 
