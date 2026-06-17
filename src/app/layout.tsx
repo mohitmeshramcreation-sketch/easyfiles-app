@@ -1,4 +1,3 @@
-
 /**
  * @fileOverview Root Layout for EasyFiles - Smart AI Document Tools.
  * Purpose: Manages global SEO metadata, high-performance font loading, and core UI providers.
@@ -11,6 +10,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 const ogImage = PlaceHolderImages.find(img => img.id === 'og-image')?.imageUrl;
 const twitterImage = PlaceHolderImages.find(img => img.id === 'twitter-image')?.imageUrl;
@@ -65,10 +65,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Source+Code+Pro&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased min-h-screen flex flex-col bg-background selection:bg-primary selection:text-primary-foreground">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster />
+        <FirebaseClientProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );

@@ -1,11 +1,7 @@
 node_modules
 .next
 .git
-.github
-.vscode
+.env
+README.md
 Dockerfile
 .dockerignore
-.env
-.env.local
-.env.production
-README.md
