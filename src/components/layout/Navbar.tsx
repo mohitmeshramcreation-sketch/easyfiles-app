@@ -5,7 +5,7 @@
  */
 
 import Link from 'next/link';
-import { Zap, Menu, X, Sparkles, Rocket } from 'lucide-react';
+import { Zap, Menu, X, Sparkles, Rocket, Code } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -17,6 +17,7 @@ export function Navbar() {
     { name: 'PDF Tools', href: '/pdf-tools' },
     { name: 'Image Tools', href: '/image-tools' },
     { name: 'AI Features', href: '/ai-tools' },
+    { name: 'Developers', href: '/developers', icon: Code },
     { name: 'Pricing', href: '/pricing' },
   ];
 

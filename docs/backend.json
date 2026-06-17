@@ -1,0 +1,37 @@
+{
+  "entities": {
+    "ApiKey": {
+      "title": "API Key",
+      "description": "User generated API key for external access to document tools.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner of the key."
+        },
+        "key": {
+          "type": "string",
+          "description": "The unique API key string."
+        },
+        "name": {
+          "type": "string",
+          "description": "Label for the key."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "key", "name", "createdAt"]
+    }
+  },
+  "auth": {
+    "providers": ["google.com"]
+  },
+  "firestore": {
+    "/apiKeys/{apiKeyId}": {
+      "schema": "#/entities/ApiKey",
+      "description": "Secure storage for developer API keys."
+    }
+  }
+}
